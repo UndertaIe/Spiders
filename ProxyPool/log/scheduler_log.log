@@ -1,0 +1,173 @@
+2020-04-14 16:09:35,845 base.py[line:428] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-04-14 16:09:35,847 base.py[line:428] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-04-14 16:09:35,848 base.py[line:861] INFO Added job "raw_proxy定时采集" to job store "default"
+2020-04-14 16:09:35,850 base.py[line:861] INFO Added job "useful_proxy定时检查" to job store "default"
+2020-04-14 16:09:35,850 base.py[line:155] INFO Scheduler started
+2020-04-14 16:09:35,851 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:09:35,851 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:10:35.847872+08:00 (in 59.996014 seconds)
+2020-04-14 16:10:35,849 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:10:35,852 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:11:35.847872+08:00 (in 59.998840 seconds)
+2020-04-14 16:11:35,851 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:11:35,852 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:12:35.847872+08:00 (in 59.996585 seconds)
+2020-04-14 16:12:35,851 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:12:35,852 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:13:35.847872+08:00 (in 59.996783 seconds)
+2020-04-14 16:13:35,850 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:13:35,851 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:14:35.845857+08:00 (in 59.995324 seconds)
+2020-04-14 16:14:35,848 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:14:35,853 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:15:35.847872+08:00 (in 59.997995 seconds)
+2020-04-14 16:15:35,851 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:15:35,853 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:16:35.847872+08:00 (in 59.995934 seconds)
+2020-04-14 16:16:35,863 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:16:35,865 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:17:35.847872+08:00 (in 59.984211 seconds)
+2020-04-14 16:17:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:17:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:18:35.847872+08:00 (in 59.991565 seconds)
+2020-04-14 16:18:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:18:36,066 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:19:35.845857+08:00 (in 59.779874 seconds)
+2020-04-14 16:19:35,849 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:19:35,849 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:20:35.847872+08:00 (in 59.998805 seconds)
+2020-04-14 16:20:35,850 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:20:35,850 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:21:35.847872+08:00 (in 59.997444 seconds)
+2020-04-14 16:21:35,851 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:21:35,851 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:22:35.847872+08:00 (in 59.996611 seconds)
+2020-04-14 16:22:35,849 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:22:35,850 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:23:35.847872+08:00 (in 59.998072 seconds)
+2020-04-14 16:23:35,852 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:23:35,853 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:24:35.845857+08:00 (in 59.992032 seconds)
+2020-04-14 16:24:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:24:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:25:35.847872+08:00 (in 59.988476 seconds)
+2020-04-14 16:25:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:25:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:26:35.847872+08:00 (in 59.990781 seconds)
+2020-04-14 16:26:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:26:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:27:35.847872+08:00 (in 59.991288 seconds)
+2020-04-14 16:27:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:27:35,861 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:28:35.847872+08:00 (in 59.986333 seconds)
+2020-04-14 16:28:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:28:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:29:35.845857+08:00 (in 59.990755 seconds)
+2020-04-14 16:29:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:29:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:30:35.847872+08:00 (in 59.991980 seconds)
+2020-04-14 16:30:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:30:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:31:35.847872+08:00 (in 59.989508 seconds)
+2020-04-14 16:31:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:31:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:32:35.847872+08:00 (in 59.991038 seconds)
+2020-04-14 16:32:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:32:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:33:35.847872+08:00 (in 59.987974 seconds)
+2020-04-14 16:33:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:33:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:34:35.845857+08:00 (in 59.990786 seconds)
+2020-04-14 16:34:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:34:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:35:35.847872+08:00 (in 59.991848 seconds)
+2020-04-14 16:35:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:35:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:36:35.847872+08:00 (in 59.987163 seconds)
+2020-04-14 16:36:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:36:35,859 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:37:35.847872+08:00 (in 59.988496 seconds)
+2020-04-14 16:37:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:37:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:38:35.847872+08:00 (in 59.992583 seconds)
+2020-04-14 16:38:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:38:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:39:35.845857+08:00 (in 59.985579 seconds)
+2020-04-14 16:39:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:39:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:40:35.847872+08:00 (in 59.990666 seconds)
+2020-04-14 16:40:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:40:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:41:35.847872+08:00 (in 59.989562 seconds)
+2020-04-14 16:41:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:41:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:42:35.847872+08:00 (in 59.992394 seconds)
+2020-04-14 16:42:35,861 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:42:35,862 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:43:35.847872+08:00 (in 59.986595 seconds)
+2020-04-14 16:43:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:43:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:44:35.845857+08:00 (in 59.987410 seconds)
+2020-04-14 16:44:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:44:35,859 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:45:35.847872+08:00 (in 59.989049 seconds)
+2020-04-14 16:45:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:45:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:46:35.847872+08:00 (in 59.989939 seconds)
+2020-04-14 16:46:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:46:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:47:35.847872+08:00 (in 59.992684 seconds)
+2020-04-14 16:47:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:47:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:48:35.847872+08:00 (in 59.988672 seconds)
+2020-04-14 16:48:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:48:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:49:35.845857+08:00 (in 59.990463 seconds)
+2020-04-14 16:49:35,854 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:49:35,854 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:50:35.847872+08:00 (in 59.992885 seconds)
+2020-04-14 16:50:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:50:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:51:35.847872+08:00 (in 59.988271 seconds)
+2020-04-14 16:51:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:51:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:52:35.847872+08:00 (in 59.987276 seconds)
+2020-04-14 16:52:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:52:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:53:35.847872+08:00 (in 59.990556 seconds)
+2020-04-14 16:53:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:53:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:54:35.845857+08:00 (in 59.987403 seconds)
+2020-04-14 16:54:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:54:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:55:35.847872+08:00 (in 59.990385 seconds)
+2020-04-14 16:55:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:55:35,859 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:56:35.847872+08:00 (in 59.989349 seconds)
+2020-04-14 16:56:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:56:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:57:35.847872+08:00 (in 59.990056 seconds)
+2020-04-14 16:57:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:57:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:58:35.847872+08:00 (in 59.989403 seconds)
+2020-04-14 16:58:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:58:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 16:59:35.845857+08:00 (in 59.988632 seconds)
+2020-04-14 16:59:35,861 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 16:59:35,862 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:00:35.847872+08:00 (in 59.986735 seconds)
+2020-04-14 17:00:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:00:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:01:35.847872+08:00 (in 59.992620 seconds)
+2020-04-14 17:01:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:01:35,861 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:02:35.847872+08:00 (in 59.987424 seconds)
+2020-04-14 17:02:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:02:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:03:35.847872+08:00 (in 59.987395 seconds)
+2020-04-14 17:03:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:03:35,861 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:04:35.845857+08:00 (in 59.984354 seconds)
+2020-04-14 17:04:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:04:35,855 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:05:35.847872+08:00 (in 59.992842 seconds)
+2020-04-14 17:05:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:05:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:06:35.847872+08:00 (in 59.987303 seconds)
+2020-04-14 17:06:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:06:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:07:35.847872+08:00 (in 59.991678 seconds)
+2020-04-14 17:07:35,860 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:07:35,861 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:08:35.847872+08:00 (in 59.986688 seconds)
+2020-04-14 17:08:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:08:35,859 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:09:35.845857+08:00 (in 59.986143 seconds)
+2020-04-14 17:09:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:09:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:10:35.847872+08:00 (in 59.989147 seconds)
+2020-04-14 17:10:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:10:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:11:35.847872+08:00 (in 59.989606 seconds)
+2020-04-14 17:11:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:11:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:12:35.847872+08:00 (in 59.990534 seconds)
+2020-04-14 17:12:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:12:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:13:35.847872+08:00 (in 59.990152 seconds)
+2020-04-14 17:13:35,859 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:13:35,860 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:14:35.845857+08:00 (in 59.986651 seconds)
+2020-04-14 17:14:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:14:35,869 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:15:35.847872+08:00 (in 59.977984 seconds)
+2020-04-14 17:15:35,862 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:15:35,863 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:16:35.847872+08:00 (in 59.984890 seconds)
+2020-04-14 17:16:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:16:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:17:35.847872+08:00 (in 59.991385 seconds)
+2020-04-14 17:17:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:17:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:18:35.847872+08:00 (in 59.989706 seconds)
+2020-04-14 17:18:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:18:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:19:35.845857+08:00 (in 59.989103 seconds)
+2020-04-14 17:19:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:19:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:20:35.847872+08:00 (in 59.990394 seconds)
+2020-04-14 17:20:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:20:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:21:35.847872+08:00 (in 59.990328 seconds)
+2020-04-14 17:21:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:21:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:22:35.847872+08:00 (in 59.989412 seconds)
+2020-04-14 17:22:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:22:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:23:35.847872+08:00 (in 59.990875 seconds)
+2020-04-14 17:23:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:23:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:24:35.845857+08:00 (in 59.988864 seconds)
+2020-04-14 17:24:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:24:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:25:35.847872+08:00 (in 59.989107 seconds)
+2020-04-14 17:25:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:25:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:26:35.847872+08:00 (in 59.989679 seconds)
+2020-04-14 17:26:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:26:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:27:35.847872+08:00 (in 59.991137 seconds)
+2020-04-14 17:27:35,858 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:27:35,859 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:28:35.847872+08:00 (in 59.989670 seconds)
+2020-04-14 17:28:35,856 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:28:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:29:35.845857+08:00 (in 59.989452 seconds)
+2020-04-14 17:29:35,855 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:29:35,856 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:30:35.847872+08:00 (in 59.992695 seconds)
+2020-04-14 17:30:35,861 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:30:35,861 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:31:35.847872+08:00 (in 59.986225 seconds)
+2020-04-14 17:31:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:31:35,858 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:32:35.847872+08:00 (in 59.990347 seconds)
+2020-04-14 17:32:35,857 base.py[line:917] DEBUG Looking for jobs to run
+2020-04-14 17:32:35,857 base.py[line:985] DEBUG Next wakeup is due at 2020-04-14 17:33:35.847872+08:00 (in 59.990170 seconds)
