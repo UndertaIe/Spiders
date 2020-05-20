@@ -5,6 +5,7 @@ from selenium import webdriver
 
 from selenium.webdriver.remote.remote_connection import LOGGER
 import logging
+import platform
 '''
     获取webdriver.Chrome
 '''
@@ -23,9 +24,10 @@ def getChromeDriver():
     # console不输出log文件
     LOGGER.setLevel(logging.ERROR)
     logging.getLogger('requests').setLevel(logging.ERROR)
-
-    driver = webdriver.Chrome(options=options, executable_path="chromedriver.exe")
-
+    if platform.system()=="Windows":
+        driver = webdriver.Chrome(options=options, executable_path="chromedriver.exe")
+    else:
+        driver = webdriver.Chrome(options=options, executable_path="chromedriver")
     #使window.navigator.webdriver值为undefined 从而绕过防爬策略
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
         "source": """
@@ -51,7 +53,10 @@ def getFirefoxDriver():
     # # 设置htpps协议也使用该代理
     # profile.set_preference('network.proxy.ssl', proxy[0])
     # profile.set_preference('network.proxy.ssl_port', proxy[1])
-    driver = webdriver.Firefox(executable_path=".\\geckodriver.exe",options=options)
+    if platform.system() == "Windows":
+        driver = webdriver.Firefox(executable_path="geckodriver.exe",options=options)
+    else:
+        driver = webdriver.Firefox(executable_path="geckodriver.exe", options=options)
 
 '''
     获取webdriver.Phantomjs
@@ -62,9 +67,10 @@ def getPhantomjs():
     cap["phantomjs.page.settings.loadImages"] = False
     cap["phantomjs.page.settings.disk-cache"] = True
     cap["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36",
-
-    driver = webdriver.PhantomJS(desired_capabilities=cap,executable_path=".\\phantomjs.exe")
-
+    if platform.system() == "Windows":
+        driver = webdriver.PhantomJS(desired_capabilities=cap,executable_path="phantomjs.exe")
+    else:
+        driver = webdriver.PhantomJS(desired_capabilities=cap, executable_path="phantomjs")
     return driver
 
 
