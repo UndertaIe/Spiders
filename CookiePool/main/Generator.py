@@ -12,14 +12,11 @@ from time import sleep
 import random
 from utils.ProxyHandler import getProxy
 from utils.UserAgentHandler import getUserAgent
-from utils.SleepUitl import sleepRandom
+from utils.SleepUtil import sleepRandom
 import requests
 import json
 
 def startCookiePool(buffer,cookieCounter,gen_cookie_num):
-    luaScript = ""
-    with open("getCokLua.lua") as f:
-        luaScript = f.read()
     cookiegen = CookieGenerator(buffer,cookieCounter,gen_cookie_num)
     cookiegen.run()
 
@@ -36,7 +33,7 @@ class CookieGenerator:
         self.init_splash()
     def init_splash(self):
         self.splashUrl = SplashUrl
-        with open("getCookie.lua") as f:
+        with open("main/getCookie.lua") as f:
             self.luaScript = f.read()
 
     def run(self):
@@ -46,7 +43,7 @@ class CookieGenerator:
             sys.stdout.flush()
             self.cookieCounter.value = self.handler.count()
             mes = ' | CookiePool | ------>>>>>>>>db exists cookie:%d' % self.cookieCounter.value
-            if self.cookieCounter.value < self.gen_cookie_num:
+            if self.cookieCounter.value < self.gen_cookie_num.value:
                 mes += '\r\n | CookiePool | ------>>>>>>>>now cookie num < MINNUM,start gernerating...'
                 sys.stdout.write(mes + "\r\n")
                 sys.stdout.flush()
