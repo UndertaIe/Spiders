@@ -11,6 +11,8 @@ from config import COOKIE_MIN,COOKIE_URLS,UPDATE_TIME,User_Agent,SplashUrl
 from time import sleep
 import random
 from utils.ProxyHandler import getProxy
+from utils.UserAgentHandler import getUserAgent
+from utils.SleepUitl import sleepRandom
 import requests
 import json
 
@@ -29,13 +31,12 @@ class CookieGenerator:
         self.cookieCounter = cookieCounter  #实时个数 易变
         self.gen_cookie_num = gen_cookie_num #要生成的cookie个数
         self.buffer = buf
-        self.userAgents = None
         self.splashUrl = ""
         self.luaScript = ""
+        self.init_splash()
     def init_splash(self):
-        self.userAgents = User_Agent
         self.splashUrl = SplashUrl
-        with open("getCokLua.lua") as f:
+        with open("getCookie.lua") as f:
             self.luaScript = f.read()
 
     def run(self):
@@ -59,7 +60,7 @@ class CookieGenerator:
 
     def getCookie(self,COOKIE_URL):
         lua_source = self.luaScript.replace("*url*",COOKIE_URL)
-        ua = random.choice(self.userAgents)
+        ua = getUserAgent()
         aproxy = getProxy()
         params = {}
         if aproxy is not None:
@@ -73,7 +74,7 @@ class CookieGenerator:
             if raw_cookies is not None:
                 cookie = self.splash2cookie(raw_cookies)
                 self.buffer.put(cookie)
-            sleep(2)#防止频率过高封IP
+            sleepRandom(2)#防止频率过高封IP
 
     @staticmethod
     def splash2cookie(raw_cookies):

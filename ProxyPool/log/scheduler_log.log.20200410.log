@@ -1,9 +1,0 @@
-2020-04-10 10:36:59,894 base.py[line:428] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2020-04-10 10:36:59,894 base.py[line:428] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2020-04-10 10:36:59,897 base.py[line:861] INFO Added job "raw_proxy定时采集" to job store "default"
-2020-04-10 10:36:59,899 base.py[line:861] INFO Added job "useful_proxy定时检查" to job store "default"
-2020-04-10 10:36:59,899 base.py[line:155] INFO Scheduler started
-2020-04-10 10:36:59,899 base.py[line:917] DEBUG Looking for jobs to run
-2020-04-10 10:36:59,900 base.py[line:985] DEBUG Next wakeup is due at 2020-04-10 10:37:59.894580+08:00 (in 59.994343 seconds)
-2020-04-10 10:37:59,908 base.py[line:917] DEBUG Looking for jobs to run
-2020-04-10 10:37:59,913 base.py[line:985] DEBUG Next wakeup is due at 2020-04-10 10:38:59.894580+08:00 (in 59.985682 seconds)
