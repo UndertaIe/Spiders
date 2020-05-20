@@ -11,7 +11,7 @@
      <script src="{% static 'js/highcharts.js' %}"></script>
     <script src="{% static 'js/highcharts-more.js' %}"></script>
     <script src="{% static 'js/exporting.js' %}"></script>
-
+    <script src="{%static 'js/echarts.min.js' %}"></script>
 </head>
 <body>
 <div class="ui visible left sidebar  thin inverted vertical menu">
@@ -21,13 +21,9 @@
     <div class="item"><a href="{% url 'document'%}">文件</a>
     <i class="browser icon"></i>
     </div>
-     <div class="item"><a href="{% url 'chart'%}">表格</a>
+     <div class="item"><a href="{% url 'chart'%}">直方图</a>
      <i class="bar chart icon"></i>
      </div>
-     <div class="item"><a href="{% url 'cloud'%}">文字云</a>
-     <i class="bar chart icon"></i>
-     </div>
-
 </div>
 <div class="pusher">
     <div class="ui menu">

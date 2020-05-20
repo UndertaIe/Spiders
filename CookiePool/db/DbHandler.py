@@ -1,7 +1,5 @@
 
 
-
-
 class DbHanlder:
 
     # 插入cookie

@@ -1,11 +1,9 @@
 
 
-import json
-import sys
 import web
-import config
-from db.DbManager import dbHandler
-from bson import json_util
+import sys
+from main.DbManager import dbHandler
+
 urls = (
     '/','get',
     '/get','get',
@@ -14,8 +12,9 @@ urls = (
     '/delete','delete',
 )
 
-def start_cookie_server():
-    sys.argv.append("{}:{}".format(config.API_SERVER,config.API_PORT))
+def start_cookie_server(ip,port):
+    sys.argv[1] = '{}:{}'.format(ip,port)
+    print("sys.argv:{}".format(sys.argv))
     server = web.application(urls, globals())
     server.run()
 
@@ -47,6 +46,8 @@ class count(object):
 
 
 if __name__ == '__main__':
+
     sys.argv.append('127.0.0.1:7788')
-    app = web.application(urls, globals())
-    app.run()
+    # app = web.application(urls, globals())
+    # app.run()
+    print(globals())

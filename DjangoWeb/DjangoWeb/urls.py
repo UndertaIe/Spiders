@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from datashow.views import test,document,chart,cloud
+from datashow.views import document,chart
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/', test),
     url(r'^document/', document,name='document'),
     url(r'^chart/', chart,name='chart'),
-    url(r'^cloud/', cloud, name='cloud'),
 ]

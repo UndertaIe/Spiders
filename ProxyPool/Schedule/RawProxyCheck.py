@@ -51,9 +51,9 @@ class RawProxyCheck(ProxyManager, Thread):
                 else:
                     self.db.put(proxy_obj)
                     self.log.info(
-                        'RawProxyCheck - {}  : {} validation pass'.format(self.name, proxy_obj.proxy.ljust(20)))
+                        'RawProxyCheck - {}  : {} validation Pass ***'.format(self.name, proxy_obj.proxy.ljust(20)))
             else:
-                self.log.info('RawProxyCheck - {}  : {} validation fail'.format(self.name, proxy_obj.proxy.ljust(20)))
+                self.log.info('RawProxyCheck - {}  : {} validation Fail ---'.format(self.name, proxy_obj.proxy.ljust(20)))
             self.queue.task_done()
 
 

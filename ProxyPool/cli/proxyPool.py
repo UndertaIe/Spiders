@@ -38,7 +38,7 @@ def schedule():
     runScheduler()
 
 
-@cli.command(name="webserver")
+@cli.command(name="api")
 def schedule():
     """ 启动web服务 """
     click.echo(HEADER)

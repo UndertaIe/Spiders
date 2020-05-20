@@ -5,12 +5,13 @@ import queue
 from db.DbHandler import DbHanlder
 from bson import json_util
 from CookiePool.utils.tran import driver2cookie
-from config import COOKIEMAXUSE
+from config import COOKIEMAXUSE,MONGODB_PARAMS
 
 class MongoHandler(DbHanlder):
 
-    def __init__(self):
-        self.client = pymongo.MongoClient(DB_CONFIG['DB_STRING'], connect=False)
+    def __init__(self,host=None,port=None,):
+        HOST = host
+        self.client = pymongo.MongoClient(MONGODB_PARAMS['url'], connect=False)
         self.db = self.client['CookiePool']
         self.Cookies = self.db['Cookies']
         #缓冲未实现

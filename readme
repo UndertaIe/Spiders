@@ -1,0 +1,86 @@
+此项目六个模块
+    三个爬虫程序模块：TaskSpider，SelectSpider，DetailSpider。
+    两个爬虫辅助模块：CookiePool，ProxyPool。
+    数据可视化模块：DjangoWeb。
+
+启动项目：
+
+    第一阶段: 启动TaskSpider
+        TaskSpider使用selenium，通过无头浏览器访问，并生成对应内容select_urls，为下一阶段BossmSpider使用。
+            1、进入TaskSpider目录。
+            2、三种方法初始化key为Boss:search的列表并启动bossSpider
+                cli:> python taskSpider.py task                                      #仅从Boss:search获取搜索项
+                cli:> python taskSpider.py task --List search1,search2,search3...    # search1,2,3为岗位名
+                cli:> python taskSpider.py task --Path search                        # search为文件路径名默认为当前目录search文件
+                cli:> python taskSpider.py task --list search1;search2 --Path search #两种方法同时初始化Boss:search
+                三种方法均将获取的岗位名存储到redis Boss:search key的列表中。
+
+            部署可能需要修改配置文件内容：搜索的key即SEARCH，redis服务器，无头浏览器驱动路径，代理服务器，热门城市的增减。
+
+    ==============================================================================================================
+
+    第二阶段: 启动ProxyPool,Splash服务,CookiePool
+        ProxyPool，CookiePool分别为爬虫程序提供代理IP,Cookie。
+
+        ProxyPool:
+            1、进入ProxyPool\cli目录。
+            2、启动代理爬取程序。
+                cli:> python proxyPool.py schedule      #启动代理爬取程序
+            3、启动代理服务,默认为localhost,8888。
+                cli:> python proxyPool.py api           #开启api可使得爬虫程序和CookiePool获取代理IP
+
+        CookiePool：
+            1、通过容器启动splash渲染js服务
+                cli:> docker run -p 8050:8050 scrapinghub/splash
+            1、进入CookiePool目录。
+            2、启动cookie生成程序。
+                cli:> python cookiepool.py gen
+                cli:> python cookiepool.py gen --count=min    #指定生成的cookie最小值min
+            3、启动cookiepool服务，默认为localhost，7788。
+                cli:> python cookiepool.py api
+                cli:> python cookiepool.py api --ip=ip --port=port #指定开启服务的ip和port
+
+        ***部署时需要使用docker运行splash***
+        ProxyPool配置：ip，port设置。可增减代理网站。如有优秀的免费代理网站可加入到ProxyPool/ProxyGetter/getFreeProxy.py中
+        CookiePool配置： 提供服务的ip和port。splash服务URL。ProxyPool服务URL。连接池大小。
+                        cookie存活时间。redis的ip、port和db。cookie更新时间。
+
+    ==============================================================================================================
+
+    第三阶段：SelectSpider,DetailSpider项目。此项目依赖第二阶段运行所生成的Proxy，Cookie。
+        SelectSpider: 项目负责解析第一阶段TaskSpider生成的select_urls，生成detail_urls,存储到redis中。
+            1、进入SelectSpider目录。
+            2、启动对select_urls返回的页面进行解析，默认为多次爬取即更换redis_key。
+                cli:> scrapy crawl bossSelect -a search=优先搜索项 single=False
+                cli:> scrapy crawl bossSelect -a search=优先搜索项 single=True
+                cli:> scrapy crawl bossSelect -a single=True
+                cli:> scrapy crawl bossSelect -a single=False
+
+                默认: scrapy crawl bossSelect
+                scrapy crawl bossSelect -a search="" single=False
+
+                其中启动参数search指定优先爬取的key，single表示是否单次redis_key爬取。
+
+        DetailSpider: 负责解析redis中detail_urls模式的url，将解析出的数据经过处理，存储到mongoDB。
+            1、进入DetailSpider目录。
+            2、启动对detail_urls返回的页面进行解析。默认为多次爬取即更换redis_key。
+                cli:> scrapy crawl bossDetail -a search=<优先搜索项> single=False 优先搜索search，结束后获取redis_key继续运行
+                cli:> scrapy crawl bossDetail -a search=<优先搜索项> single=True 优先搜索search，运行结束后退出爬虫程序
+                cli:> scrapy crawl bossDetail -a single=True  从redis获取一次redis_key，获取url直到无此redis_key无url后退出
+                cli:> scrapy crawl bossDetail -a single=False 从redis获取redis_key，获取url直到无此redis_key时再次获取redis_key运行，直到没有符合条件的key后结束爬虫程序
+
+                默认: scrapy crawl bossDetail
+                scrapy crawl bossDetail -search="" single=False
+
+                其中启动参数search指定优先爬取的key，single表示是否单次redis_key爬取。
+
+        部署SelectSpider,bossDetail配置：
+            redis数据库ip，port，db。mongoDB数据库ip，port，数据库名。proxy代理服务ip，port。cookie服务ip，port。
+            中间件、扩展的开启关闭。是否遵守robots协议。请求并发数。空闲等待时间。关闭等待时间。
+
+    ==============================================================================================================
+
+
+
+
+

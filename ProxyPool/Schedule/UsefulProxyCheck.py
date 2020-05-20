@@ -48,10 +48,10 @@ class UsefulProxyCheck(ProxyManager, Thread):
             proxy_obj, status = checkProxyUseful(proxy_obj)
             if status or proxy_obj.fail_count < FAIL_COUNT:
                 self.db.put(proxy_obj)
-                self.log.info('UsefulProxyCheck - {}  : {} validation pass'.format(self.name,
+                self.log.info('UsefulProxyCheck - {}  : {} validation Pass ***'.format(self.name,
                                                                                    proxy_obj.proxy.ljust(20)))
             else:
-                self.log.info('UsefulProxyCheck - {}  : {} validation fail'.format(self.name,
+                self.log.info('UsefulProxyCheck - {}  : {} validation Fail ---'.format(self.name,
                                                                                    proxy_obj.proxy.ljust(20)))
                 self.db.delete(proxy_obj.proxy)
             self.queue.task_done()

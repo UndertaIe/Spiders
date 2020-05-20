@@ -124,4 +124,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 #引入mongodb连接
 from mongoengine import connect
-connect("BossItems",host='127.0.0.1',port=27017)
+connect("BossJobs",host='127.0.0.1',port=27017)

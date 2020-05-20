@@ -1,26 +1,27 @@
 from redis import Redis
 
-import config
-from db.DbHandler import DbHanlder
+
 import redis
 import json
 from redis.exceptions import RedisError
-
+from db.DbHandler import DbHanlder
+from config import REDIS_PARAMS
+import config
 #zcard(jihe) 个数
 #zadd(jihe,{data:score})
 #redis.zrevrangebyscore(self.get_index_name("score"), '+inf', '-inf', start=0, num=count)) 得到值
 
 #r.zrevrangebyscore('Coo','+inf','-inf',start=0,num=1)得到一个值
 class RedisHanler(DbHanlder):
-    def __init__(self, url=None):
-        self.redis_url = url or config.DB_CONFIG['DB_STRING']
-        self.redis = redis.from_url(self.redis_url)
+    def __init__(self, host=None, port=None, pwd=None):
+        redis_host = host or REDIS_PARAMS['host']
+        redis_port = port or REDIS_PARAMS['port']
+        redis_pwd = pwd or REDIS_PARAMS['password']
+        self.redis = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd)
         self.key = "Cookies"
         self.redis.expire(self.key,config.EXPIRE_TIME)  #设置过期时间
     #插入cookie
     def insert(self,cookie):
-        if len(cookie) == 4:
-            return 0
         try:
             result = self.redis.zadd(self.key,{json.dumps(cookie):1})
         except RedisError:
@@ -48,8 +49,8 @@ class RedisHanler(DbHanlder):
             if result is None:
                 print("No data")
                 return None
-            else:
-                cookie = result[0] #此时返回的是字节串
+            try:
+                cookie = result[0] #此时返回的是字节串数组
                 score = self.redis.zscore(self.key,cookie)
                 if score<4: #score<4表示此cookie再次使用
                     self.redis.zadd(self.key, {cookie:(score+1)})
@@ -58,10 +59,10 @@ class RedisHanler(DbHanlder):
                 else:#不能再次使用且本次也不能使用并且移除
                     self.redis.zrem(self.key, cookie)
                     cookie = None
+            except:
+                return None
             if cookie is not None:
                 break
-            else:
-                continue
         return cookie
 
     def count(self):

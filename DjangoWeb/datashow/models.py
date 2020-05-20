@@ -29,6 +29,14 @@ class ItemInfo(Document):
     publish = StringField() # 发布时间
     address = StringField() # 详细地址
     url = StringField() # 细节链接页面''
+    #指定Collection
+    meta = {'abstract':True}
 
-    #指定是数据表格
-    meta={'collection':'zufang_detail'}
+class PythonItemInfo(ItemInfo):
+    meta = {'collection':'Python'}
+class CppItemInfo(ItemInfo):
+    meta = {'collection':'C++'}
+class JavaItemInfo(ItemInfo):
+    meta = {'collection': 'Java'}
+class CItemInfo(ItemInfo):
+    meta = {'collection': 'C'}

@@ -211,7 +211,7 @@ class GetFreeProxy(object):
                 "http://www.ip3366.net/free/?stype=2"]
         request = WebRequest()
         for url in urls:
-            r = request.get(url, timeout=10)
+            r = request.get(url, timeout=5)
             proxies = re.findall(r'<td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>[\s\S]*?<td>(\d+)</td>', r.text)
             for proxy in proxies:
                 yield ":".join(proxy)
@@ -230,7 +230,7 @@ class GetFreeProxy(object):
         ]
         request = WebRequest()
         for url in urls:
-            r = request.get(url, timeout=10)
+            r = request.get(url, timeout=5)
             proxies = re.findall(r'<td>\s*?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s*?</td>[\s\S]*?<td>\s*?(\d+)\s*?</td>',
                                  r.text)
             for proxy in proxies:
@@ -302,7 +302,7 @@ class GetFreeProxy(object):
         request = WebRequest()
         for page in range(1, max_page + 1):
             url = base_url + str(page)
-            r = request.get(url, timeout=10)
+            r = request.get(url, timeout=5)
             proxies = re.findall(
                 r'<td.*?>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>[\s\S]*?<td.*?>(\d+)</td>',
                 r.text)
@@ -321,7 +321,7 @@ class GetFreeProxy(object):
         request = WebRequest()
         for page in range(1, max_page + 1):
             url = base_url.format(page)
-            r = request.get(url, timeout=10)
+            r = request.get(url, timeout=5)
             proxies = re.findall(
                 r'<td.*?>[\s\S]*?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})[\s\S]*?</td>[\s\S]*?<td.*?>[\s\S]*?(\d+)[\s\S]*?</td>',
                 r.text)
@@ -336,7 +336,7 @@ class GetFreeProxy(object):
                 "http://www.xiladaili.com/https/"]
         request = WebRequest()
         for url in urls:
-            r = request.get(url, timeout=10)
+            r = request.get(url, timeout=5)
             ips = re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}", r.text)
             for ip in ips:
                 yield ip.strip()
