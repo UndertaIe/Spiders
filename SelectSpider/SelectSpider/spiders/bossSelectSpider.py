@@ -16,10 +16,10 @@ cli:
     default:scrapy crawl mslave -search="" single=False
             scrapy crawl mslave 
             
-    scrapy crawl mslave -a search=优先搜索项 single=False 优先搜索search，结束后获取redis_key继续运行
-    scrapy crawl mslave -a search=优先搜索项 single=True 优先搜索search，运行结束后退出爬虫程序
-    scrapy crawl mslave -a single=True 从redis获取一次redis_key，获取url直到无此redis_key无url后退出
-    scrapy crawl mslave -a single=False从redis获取redis_key，获取url直到无此redis_key时再次获取redis_key运行，直到没有符合条件的key后结束爬虫程序
+    scrapy crawl bossSelect -a search=优先搜索项 single=False 优先搜索search，结束后获取redis_key继续运行
+    scrapy crawl bossSelect -a search=优先搜索项 single=True 优先搜索search，运行结束后退出爬虫程序
+    scrapy crawl bossSelect -a single=True 从redis获取一次redis_key，获取url直到无此redis_key无url后退出
+    scrapy crawl bossSelect -a single=False从redis获取redis_key，获取url直到无此redis_key时再次获取redis_key运行，直到没有符合条件的key后结束爬虫程序
         
 '''
 

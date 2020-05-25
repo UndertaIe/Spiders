@@ -1,6 +1,6 @@
 from selenium import webdriver
 import requests
-from .utils.CookieHandler import getCookie
+from utils.CookieHandler import getCookie
 from time import sleep
 
 class CookieMiddleware(object):

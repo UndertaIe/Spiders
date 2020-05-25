@@ -51,7 +51,7 @@ def runScheduler():
     scheduler_log = LogHandler("scheduler_log")
     scheduler = BlockingScheduler(logger=scheduler_log)
 
-    scheduler.add_job(rawProxyScheduler, 'interval', minutes=5, id="raw_proxy_check", name="raw_proxy定时采集")
+    scheduler.add_job(rawProxyScheduler, 'interval', minutes=10, id="raw_proxy_check", name="raw_proxy定时采集")
     scheduler.add_job(usefulProxyScheduler, 'interval', minutes=2, id="useful_proxy_check", name="useful_proxy定时检查")
 
     scheduler.start()

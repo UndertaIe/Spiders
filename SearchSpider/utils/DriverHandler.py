@@ -9,6 +9,16 @@ import platform
 '''
     获取webdriver.Chrome
 '''
+def getDriver(driverType='chrome'):
+    if driverType=="chrome":
+        return getChromeDriver()
+    elif driverType=="firefox":
+        return getFirefoxDriver()
+    elif driverType=="phantomjs":
+        return getPhantomjs()
+    else:
+        return None
+
 def getChromeDriver():
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")  # 设置浏览器为headless无界面模式
@@ -66,12 +76,17 @@ def getPhantomjs():
     cap["phantomjs.page.settings.resourceTimeout"] = 2000
     cap["phantomjs.page.settings.loadImages"] = False
     cap["phantomjs.page.settings.disk-cache"] = True
+    # phantomjs --proxy=ip:port --proxy-type=[http|socks5|none] demo.js
     cap["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36",
     if platform.system() == "Windows":
         driver = webdriver.PhantomJS(desired_capabilities=cap,executable_path="phantomjs.exe")
     else:
         driver = webdriver.PhantomJS(desired_capabilities=cap, executable_path="phantomjs")
     return driver
+
+def driverChangeOptions(driver):
+    pass
+
 
 
 # 可在此处测试driver是否可以正常运行。

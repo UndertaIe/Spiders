@@ -39,7 +39,7 @@ MONGODB_DB = "{}{}".format(SITE, SEARCH_TYPE)
 #配置代理服务
 PROXY_URL = "http://101.200.79.28:5010/"
 PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
-PROXY_EXPIRE = 1 * 30 #经过30s更换代理
+PROXY_EXPIRE = 1 * 30 #经过30s更换代理 | 更换得到更新后的代理组并每个请求都更换代理
 #========================
 #配置Cookie
 COOKIE_URL = "http://101.200.79.28:7788/"
@@ -68,17 +68,18 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None,
     'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': 400,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
-    'SelectSpider.ProxyMiddleware.ProxyMiddleware':101,
-    'SelectSpider.CookieMiddleware.CookieMiddleware': 102,
-    'SelectSpider.RotateUserAgentMiddleware.RotateUserAgentMiddleware':400,
+    # 'SelectSpider.ProxyMiddleware.ProxyMiddleware':101,
+    # 'SelectSpider.CookieMiddleware.CookieMiddleware': 102,
+    # 'SelectSpider.RotateUserAgentMiddleware.RotateUserAgentMiddleware':400,
+    'DetailSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
     'SelectSpider.RedirectMiddleware.RedirectMiddleware':500,
     'SelectSpider.TimeoutMiddleware.TimeoutMiddleware':610,
 
 }
-
-ITEM_PIPELINES = {
-    'SelectSpider.SelectPipelines.BossSelectPipeline': 300,
-}
+#
+# ITEM_PIPELINES = {
+#     'SelectSpider.SelectPipelines.BossSelectPipeline': 300,
+# }
 
 LOG_LEVEL = 'WARNING'
 

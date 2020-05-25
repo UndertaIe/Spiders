@@ -38,6 +38,10 @@ DB_HOST = getenv('db_host', '101.200.79.28')
 DB_PORT = getenv('db_port', 6378)
 DB_PASSWORD = getenv('db_password', 'myredis0')
 
+# DB_TYPE = getenv('db_type', 'redis').upper()
+# DB_HOST = getenv('db_host', '127.0.0.1')
+# DB_PORT = getenv('db_port', 6379)
+#DB_PASSWORD = getenv('db_password', 'myredis0')
 
 """ 数据库配置 """
 DATABASES = {
@@ -54,22 +58,23 @@ DATABASES = {
 
 PROXY_GETTER = [
     "freeProxy01",
-    # "freeProxy02",
+    "freeProxy02",
     "freeProxy03",
     "freeProxy04",
     "freeProxy05",
     # "freeProxy06",
     "freeProxy07",
-    # "freeProxy08",
+    "freeProxy08",
     "freeProxy09",
     "freeProxy13",
     "freeProxy14",
-    "freeProxy14",
+    "freeProxy15",
+    'freeProxy16'
 ]
 
 """ API config http://127.0.0.1:5010 """
 SERVER_API = {
-    "HOST": "101.200.79.28",  # The ip specified which starting the web API
+    "HOST": "0.0.0.0",  # The ip specified which starting the web API
     "PORT": 5010  # port number to which the server listens to
 }
 

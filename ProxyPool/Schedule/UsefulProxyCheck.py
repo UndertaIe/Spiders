@@ -20,6 +20,7 @@ except:
     from queue import Queue, Empty  # py3
 
 from Util import LogHandler
+from Util.MyIP import getMyIP
 from Manager import ProxyManager
 from ProxyHelper import checkProxyUseful, Proxy
 
@@ -33,7 +34,7 @@ class UsefulProxyCheck(ProxyManager, Thread):
 
         self.queue = queue
         self.log = LogHandler('useful_proxy_check')
-
+        self.myIP = getMyIP()
     def run(self):
         self.log.info("UsefulProxyCheck - {}  : start".format(self.name))
         self.db.changeTable(self.useful_proxy_queue)
@@ -45,10 +46,10 @@ class UsefulProxyCheck(ProxyManager, Thread):
                 break
 
             proxy_obj = Proxy.newProxyFromJson(proxy_str)
-            proxy_obj, status = checkProxyUseful(proxy_obj)
+            proxy_obj, status = checkProxyUseful(proxy_obj,self.myIP)
             if status or proxy_obj.fail_count < FAIL_COUNT:
                 self.db.put(proxy_obj)
-                self.log.info('UsefulProxyCheck - {}  : {} validation Pass ***'.format(self.name,
+                self.log.info('UsefulProxyCheck - {}  : {} validation Pass ******'.format(self.name,
                                                                                    proxy_obj.proxy.ljust(20)))
             else:
                 self.log.info('UsefulProxyCheck - {}  : {} validation Fail ---'.format(self.name,

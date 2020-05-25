@@ -12,22 +12,24 @@
 """
 __author__ = 'JHao'
 
-from Util import validUsefulProxy
+from Util import validUsefulProxy,validRawProxy
 
 from datetime import datetime
 
 
-def checkProxyUseful(proxy_obj):
+def checkProxyUseful(proxy_obj,myip):
     """
-    检测代理是否可用
+    检测代理是否是匿名IP
+    :param myip:
     :param proxy_obj: Proxy object
     :return: Proxy object, status
     """
 
-    if validUsefulProxy(proxy_obj.proxy):
+    if validUsefulProxy(proxy_obj.proxy,myip):
         # 检测通过 更新proxy属性
         proxy_obj.check_count += 1
         proxy_obj.last_status = 1
+        proxy_obj.type = "1"
         proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if proxy_obj.fail_count > 0:
             proxy_obj.fail_count -= 1
@@ -38,3 +40,28 @@ def checkProxyUseful(proxy_obj):
         proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         proxy_obj.fail_count += 1
         return proxy_obj, False
+
+
+def checkRawUseful(proxy_obj):
+    """
+    检测代理是否可用
+    :param proxy_obj: Proxy object
+    :return: Proxy object, status
+    """
+
+    if validRawProxy(proxy_obj.proxy):
+        # 检测通过 更新proxy属性
+        proxy_obj.check_count += 1
+        proxy_obj.last_status = 1
+        proxy_obj.type = "0"  #透明IP
+        proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        if proxy_obj.fail_count > 0:
+            proxy_obj.fail_count -= 1
+        return proxy_obj, True
+    else:
+        proxy_obj.check_count += 1
+        proxy_obj.last_status = 0
+        proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        proxy_obj.fail_count += 1
+        return proxy_obj, False
+

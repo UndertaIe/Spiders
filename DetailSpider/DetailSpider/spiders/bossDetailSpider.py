@@ -14,10 +14,10 @@ cli:
     default:scrapy crawl slave -search="" single=False
             scrapy crawl slave 
             
-    scrapy crawl slave -a search=<优先搜索项> single=False 优先搜索search，结束后获取redis_key继续运行
-    scrapy crawl slave -a search=<优先搜索项> single=True 优先搜索search，运行结束后退出爬虫程序
-    scrapy crawl slave -a single=True  从redis获取一次redis_key，获取url直到无此redis_key无url后退出
-    scrapy crawl slave -a single=False 从redis获取redis_key，获取url直到无此redis_key时再次获取redis_key运行，直到没有符合条件的key后结束爬虫程序
+    scrapy crawl bossDetail -a search=<优先搜索项> single=False 优先搜索search，结束后获取redis_key继续运行
+    scrapy crawl bossDetail -a search=<优先搜索项> single=True 优先搜索search，运行结束后退出爬虫程序
+    scrapy crawl bossDetail -a single=True  从redis获取一次redis_key，获取url直到无此redis_key无url后退出
+    scrapy crawl bossDetail -a single=False 从redis获取redis_key，获取url直到无此redis_key时再次获取redis_key运行，直到没有符合条件的key后结束爬虫程序
  
 '''
 class BossDetailSpider(RedisSpider):

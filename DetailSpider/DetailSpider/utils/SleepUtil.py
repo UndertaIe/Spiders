@@ -32,4 +32,3 @@ def sleepWarn():
     """发声警告时休眠"""
     sleepRandom(2)
 
-

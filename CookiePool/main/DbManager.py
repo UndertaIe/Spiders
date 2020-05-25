@@ -20,7 +20,7 @@ def storeCookie(buffer,cookieCount):
         try:
             cookieCount.value = dbHandler.count() # 将redis数据库中cookie数目赋给cookieCount
             cookie = buffer.get(timeout=1024)
-            if cookie is not None and len(cookie) == 1:
+            if cookie is not None and len(cookie) == 3:
                 f = dbHandler.insert(cookie)
                 if f == 1:
                     goodCount += 1

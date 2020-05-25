@@ -3,7 +3,7 @@
 
 from utils.RedisHandler import RedisHandler
 from utils.cityUitl import getHotCity
-from utils.DriverHandler import getChromeDriver
+from utils.DriverHandler import getDriver
 from utils.SleepUtil import sleepClear,sleepInput,sleepClick,sleepGet
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
@@ -19,7 +19,7 @@ def startTask(Counter,searchKey,isHotCity):
 #searchMethod可增加搜索方法 在search方法中循环搜索 直到search key中无内容
 def search(Counter,searchKey,searchMethod):
     r = RedisHandler(search=searchKey)
-    driver = getChromeDriver()
+    driver = getDriver('chrome')
     while True:
         oneSearch = r.getSearch()
         if oneSearch is None:

@@ -24,4 +24,12 @@ def sleepInput():
     """搜索框输入休眠"""
     sleepRandom()
 
+def sleepError():
+    """发生错误时休眠"""
+    sleepRandom(3)
+
+def sleepWarn():
+    """发声警告时休眠"""
+    sleepRandom(2)
+
 

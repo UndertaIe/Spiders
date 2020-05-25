@@ -5,7 +5,7 @@ import redis
 import json
 from redis.exceptions import RedisError
 from db.DbHandler import DbHanlder
-from config import REDIS_PARAMS
+from config import REDIS_PARAMS,COOKIEMAXUSE
 import config
 #zcard(jihe) 个数
 #zadd(jihe,{data:score})
@@ -17,9 +17,11 @@ class RedisHanler(DbHanlder):
         redis_host = host or REDIS_PARAMS['host']
         redis_port = port or REDIS_PARAMS['port']
         redis_pwd = pwd or REDIS_PARAMS['password']
-        self.redis = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd)
+        redis_db = pwd or REDIS_PARAMS['db']
+        self.redis = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd, db=redis_db)
         self.key = "Cookies"
         self.redis.expire(self.key,config.EXPIRE_TIME)  #设置过期时间
+        self.reuse = COOKIEMAXUSE
     #插入cookie
     def insert(self,cookie):
         try:
@@ -52,9 +54,9 @@ class RedisHanler(DbHanlder):
             try:
                 cookie = result[0] #此时返回的是字节串数组
                 score = self.redis.zscore(self.key,cookie)
-                if score<4: #score<4表示此cookie再次使用
+                if score<self.reuse: #score < reuse表示此cookie再次使用
                     self.redis.zadd(self.key, {cookie:(score+1)})
-                elif score == 4:#不能再次使用并且移除
+                elif score == self.reuse:#不能再次使用并且移除
                     self.redis.zrem(self.key,cookie)
                 else:#不能再次使用且本次也不能使用并且移除
                     self.redis.zrem(self.key, cookie)

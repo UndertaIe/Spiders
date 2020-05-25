@@ -7,12 +7,13 @@ import time
 from gevent.pool import Pool
 from config import POOLSIZE
 from main.DbManager import dbHandler
-from config import COOKIE_MIN,COOKIE_URLS,UPDATE_TIME,User_Agent,SplashUrl
+from config import COOKIE_MIN,COOKIE_URLS,UPDATE_TIME,SplashUrl
 from time import sleep
 import random
 from utils.ProxyHandler import getProxy
 from utils.UserAgentHandler import getUserAgent
 from utils.SleepUtil import sleepRandom
+from config import SplashAuthUser,SplashAuthPwd
 import requests
 import json
 
@@ -56,24 +57,32 @@ class CookieGenerator:
                 time.sleep(UPDATE_TIME)
 
     def getCookie(self,COOKIE_URL):
-        lua_source = self.luaScript.replace("*url*",COOKIE_URL)
         ua = getUserAgent()
-        aproxy = getProxy()
-        params = {}
+        aproxy = getProxy()  # 必须设置实时有效代理IP 否则并发环境下 爬虫速度过高容易被检测出来
+        lua_source = self.luaScript.replace("*url*",COOKIE_URL)
+        if ua is not None:
+            lua_source.replace("*UA*", ua)
         if aproxy is not None:
-            params.setdefault('proxies',"http://{}".format(aproxy['proxy']))
-        params.setdefault("user-agent",ua)
-        params.setdefault('lua_script',lua_source)
-        headers = {"content-type": "application/json"}
-        for i in range(5):
-            r = requests.post(url=self.splashUrl,data=json.dumps(params),headers=headers)
+            proxy = aproxy['proxy']
+            proxy_host,proxy_port = proxy.split(':')
+            lua_source = lua_source.replace("*proxy_host*",proxy_host)   #在lua脚本中更换IP代理
+            lua_source = lua_source.replace("*proxy_port*", proxy_port)
+        data = {'timeout': 20, 'lua_source': lua_source}
+        try:
+            r = requests.post(url=self.splashUrl, data=json.dumps(data), headers={'Content-Type': 'application/json'}, auth=(SplashAuthUser,SplashAuthPwd))
+        except:
+            pass
+        if r.status_code == 200:
             raw_cookies = r.json()
             if raw_cookies is not None:
                 cookie = self.splash2cookie(raw_cookies)
+                cookie.setdefault('proxy',proxy)
+                cookie.setdefault('ua',ua)
                 self.buffer.put(cookie)
-            sleepRandom(2)#防止频率过高封IP
+        sleepRandom()#防止频率过高封IP
 
     @staticmethod
     def splash2cookie(raw_cookies):
         key = "__zp_stoken__"
-        return { key:cookie['value'] for cookie in raw_cookies if key == cookie['name'] }
+        if isinstance(raw_cookies,list):
+            return { key:cookie['value'] for cookie in raw_cookies if key == cookie.get('name') }

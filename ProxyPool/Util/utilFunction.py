@@ -59,7 +59,7 @@ def getHtmlTree(url, **kwargs):
               }
     # TODO 取代理服务器用代理服务器访问
     wr = WebRequest()
-    html = wr.get(url=url, header=header).content
+    html = wr.get(url=url, header=header,timeout=10).content
     return etree.HTML(html)
 
 
@@ -75,20 +75,37 @@ def tcpConnect(proxy):
     result = s.connect_ex((ip, int(port)))
     return True if result == 0 else False
 
-
-def validUsefulProxy(proxy):
+def validRawProxy(proxy):
     """
-    检验代理是否可用
+    进行第一次代理检验 访问https://www.baidu.com 访问比httpbin.org快
     :param proxy:
     :return:
     """
     if isinstance(proxy, bytes):
         proxy = proxy.decode("utf8")
-    proxies = {"https": "https://{proxy}".format(proxy=proxy)}
+    proxies = {"http":"http://{proxy}".format(proxy=proxy), "https": "https://{proxy}".format(proxy=proxy)}
     try:
-        r = requests.get('https://www.zhipin.com', proxies=proxies, timeout=3)
+        r = requests.get('https://www.baidu.com', proxies=proxies, timeout=3)
+        return True if r.status_code == 200 else False
+    except Exception as e:
+        pass
+    return False
+
+def validUsefulProxy(proxy,myip):
+    """
+    第二次检验代理是否是高匿IP
+    :param myip:
+    :param proxy:
+    :return:
+    """
+    if isinstance(proxy, bytes):
+        proxy = proxy.decode("utf8")
+    proxies = {"http":"http://{proxy}".format(proxy=proxy), "https": "https://{proxy}".format(proxy=proxy)}
+    try:
+        r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=10)
         if r.status_code == 200:
-            return True
+            j = r.json()
+            return True if j['origin'].find(myip)!=-1 else False #第一个高匿  第二个透明 看情况使用
     except Exception as e:
         pass
     return False

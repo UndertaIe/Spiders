@@ -47,8 +47,8 @@ class BossSelectPipeline:
             raise DropItem("Duplicate item found: welfares is None")
         if item['address'] is None:
             raise DropItem("Duplicate item found: address is None")
-        if item['dutys'] is None:
-            raise DropItem("Duplicate item found: dutys is None")
+        # if item['dutys'] is None:
+        #     raise DropItem("Duplicate item found: dutys is None")
         #if item['publish'] is None:
         #    raise DropItem("Duplicate item found: pubilish is None")
         if item['url'] is None:

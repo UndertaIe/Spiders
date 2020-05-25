@@ -11,6 +11,6 @@
 -------------------------------------------------
 """
 
-from Util.utilFunction import validUsefulProxy
+from Util.utilFunction import validUsefulProxy,validRawProxy
 from Util.LogHandler import LogHandler
 from Util.utilClass import Singleton
