@@ -9,6 +9,7 @@ def getCookie():
     try:
         r = requests.get(url=url,timeout=3,headers={"UserAgent":"-*-DetailSpider-*-"})
         cookie = r.json()
+        r.close()
     except RequestException as e:
         print("###[ERROR] 请求Cookie失败 ###")
     return cookie
@@ -17,6 +18,7 @@ def getCookeCount():
     try:
         r = requests.get(url=COOKIE_URL,timeout=3,headers={"UserAgent":"-*-DetailSpider-*-"})
         count = int(r.text)
+        r.close()
     except RequestException as e:
         print("###[ERROR] 请求Cookie Count失败 ###")
     return count
