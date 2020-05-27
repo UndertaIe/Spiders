@@ -1,8 +1,7 @@
 
 import redis
 from redis import ConnectionError
-from settings import REDIS_PARAMS
-from settings import SEARCH
+from ..settings import REDIS_PARAMS,SEARCH
 
 class RedisHandler:
     def __init__(self, host=None, port=None, pwd=None, search=SEARCH):
@@ -11,8 +10,9 @@ class RedisHandler:
             redis_port = port or REDIS_PARAMS['port']
             redis_pwd = pwd or REDIS_PARAMS['password']
             self.con = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd)
+            # self.con = redis.StrictRedis(host=redis_host, port=redis_port)
         except ConnectionError:
-            print("###[ERROR] Redis Connection Error ###")
+            print("###[ERROR] RedisHandler.Connection ConnectionError ###")
         self.site = search.split(':')[0]
         self.search = search
         self.encoding = "utf-8"
@@ -64,7 +64,7 @@ class RedisHandler:
         try:
             self.con.close()
         except:
-            print("### Close Redis ERROR ###")
+            print("### RedisHandler.close RedisCloseException ###")
 
 if __name__ == "__main__":
     pass

@@ -1,8 +1,8 @@
 #!/usr/bin/python 
 # -*- coding: utf-8 -*-
 
-from utils.CookieHandler import getCookie
-from utils.SleepUtil import sleepError
+from .utils.CookieHandler import getCookie
+from .utils.SleepUtil import sleepError
 
 class CookieProxyUserAgentBindMiddleware(object):
 

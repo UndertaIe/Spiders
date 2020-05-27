@@ -25,10 +25,14 @@ SEARCH_TYPE="Jobs"
 #配置Redis数据库
 #REDIS_HOST = "127.0.0.1" deprecated
 #REDIS_PORT = 6379 deprecated
+# REDIS_PARAMS = {
+#     'host':'101.200.79.28',   #远程redis
+#     'port':6378,
+#     'password':'myredis0',
+# }
 REDIS_PARAMS = {
-    'host':'101.200.79.28',
+    'host':'localhost',   #远程redis
     'port':6378,
-    'password':'myredis0',
 }
 #========================
 #配置MongoDB数据库
@@ -62,12 +66,10 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware': 550,
     'scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware': 560,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 590,
-    'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware': 830,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
     'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware': None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
-    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None,
-    'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 600,
+    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': 610,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
     # 'DetailSpider.ProxyMiddleware.ProxyMiddleware':101,
     # 'DetailSpider.CookieMiddleware.CookieMiddleware': 102,
@@ -106,7 +108,7 @@ RESET_KEY_NUMBER = 4     # 重置redis key时间片个数 超过这个时间 即
 
 EXTENSIONS = {
    'scrapy.extensions.telnet.TelnetConsole': None,
-    'DetailSpider.extensions.RedisSpiderSmartIdleClosedExtensions': 500,
+    'DetailSpider.RedisSpiderExtensions.RedisSpiderExtension': 500,
 }
 
 # Configure item pipelines

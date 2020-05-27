@@ -3,8 +3,9 @@
 from scrapy_redis.spiders import RedisSpider
 from scrapy.selector import Selector
 from scrapy.loader import ItemLoader
-from RedisHandler import RedisHandler
+from ..utils.RedisHandler import RedisHandler
 import re
+from ..utils.SleepUtil import sleepRandom
 from urllib.parse import unquote,urljoin
 from time import sleep
 import random
@@ -33,7 +34,7 @@ class BossSelectSpider(RedisSpider):
         super(BossSelectSpider, self).__init__(*args,**kwargs)
 
         # 搜索名
-        self.search = search
+        self.search = search if search!="" else "noob"
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
         self.singleSearch = single
         self.redisHandler = RedisHandler()
@@ -92,4 +93,4 @@ class BossSelectSpider(RedisSpider):
                 print("### 城市 {} 查询已结束 #".format(city))
         else:
             print("### 城市 {} 查询已结束 ###".format(city))
-        sleep(random.random()+1)
+        sleepRandom(1)

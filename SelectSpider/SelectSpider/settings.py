@@ -30,6 +30,11 @@ REDIS_PARAMS = {
     'port':6378,
     'password':'myredis0',
 }
+# REDIS_PARAMS = {
+#     'host':'localhost',   #远程redis
+#     'port':6379,
+#     # 'password':'myredis0',
+# }
 #========================
 #配置MongoDB数据库
 MONGODB_HOST = "101.200.79.28"
@@ -61,18 +66,16 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware': 550,
     'scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware': 560,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 590,
-    'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware': 830,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
     'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware': None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
-    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None,
-    'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': 400,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 600,
+    # 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': 610,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
     # 'SelectSpider.ProxyMiddleware.ProxyMiddleware':101,
     # 'SelectSpider.CookieMiddleware.CookieMiddleware': 102,
     # 'SelectSpider.RotateUserAgentMiddleware.RotateUserAgentMiddleware':400,
-    'DetailSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
-    'SelectSpider.RedirectMiddleware.RedirectMiddleware':500,
+    # 'SelectSpider.RedirectMiddleware.RedirectMiddleware':400,
+    'SelectSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
     'SelectSpider.TimeoutMiddleware.TimeoutMiddleware':610,
 
 }
@@ -83,7 +86,8 @@ DOWNLOADER_MIDDLEWARES = {
 
 LOG_LEVEL = 'WARNING'
 
-
+REDIRECT_ENABLED = False
+DOWNLOAD_TIMEOUT = 10
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 
 
@@ -96,7 +100,7 @@ RESET_KEY_NUMBER = 4     # 重置redis key时间片个数 超过这个时间 即
 
 EXTENSIONS = {
     'scrapy.extensions.telnet.TelnetConsole': None,
-    'SelectSpider.extensions.RedisSpiderSmartIdleClosedExtensions': 500,
+    'SelectSpider.RedisSpiderExtensions.RedisSpiderExtension': 200,
 }
 
 

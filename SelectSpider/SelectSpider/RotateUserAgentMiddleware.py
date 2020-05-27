@@ -1,6 +1,6 @@
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 #from fake_useragent import UserAgent 连接远程useragent较慢
-from utils.UserAgentHandler import getUserAgent
+from .utils.UserAgentHandler import getUserAgent
 
 class RotateUserAgentMiddleware(UserAgentMiddleware):
     """

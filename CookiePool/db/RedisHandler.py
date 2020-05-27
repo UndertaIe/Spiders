@@ -49,8 +49,7 @@ class RedisHanler(DbHanlder):
                 print("!!!redis cookie get error!!!")
                 break
             if result is None:
-                print("No data")
-                return None
+                return {}
             try:
                 cookie = result[0] #此时返回的是字节串数组
                 score = self.redis.zscore(self.key,cookie)
@@ -68,11 +67,12 @@ class RedisHanler(DbHanlder):
         return cookie
 
     def count(self):
+        cookie_count = None
         try:
-            count = self.redis.zcard(self.key)
+            cookie_count = self.redis.zcard(self.key)
         except RedisError:
             print("!!!redis cookie count error!!!")
-        return count
+        return cookie_count if cookie_count is not None else 0
 
     #去除cookie
     def remove(self):

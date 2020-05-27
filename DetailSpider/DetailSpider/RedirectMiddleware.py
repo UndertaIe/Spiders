@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-*-coding:utf-8-*-
 
-from utils.RedisHandler import RedisHandler
+from .utils.RedisHandler import RedisHandler
 from scrapy.downloadermiddlewares.redirect import RedirectMiddleware
 
 class Redirect_Middleware(RedirectMiddleware):

@@ -360,8 +360,24 @@ class GetFreeProxy(object):
             for ip in ips:
                 yield ip.strip()
 
+    @staticmethod
+    def freeProxy17():
+        """nimadaili"""
+        urls = []
+        raw_urls = ["http://www.nimadaili.com/gaoni/",
+                    "http://www.nimadaili.com/http/",
+                    "http://www.nimadaili.com/https/"]
+        urls.extend([raw_url + str(index + 1) for raw_url in raw_urls for index in range(20)])
+        request = WebRequest()
+        for url in urls:
+            res = request.get(url,timeout=10)
+            ips = re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}", res.text)
+            for ip in ips:
+                yield ip.strip()
 
-
+    # @staticmethod
+    # def freeProxy18():
+    #     pass
 
 if __name__ == '__main__':
     from CheckProxy import CheckProxy

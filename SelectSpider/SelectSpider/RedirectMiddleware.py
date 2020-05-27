@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-*-coding:utf-8-*-
 
-from utils.RedisHandler import RedisHandler
+from .utils.RedisHandler import RedisHandler
 from scrapy.downloadermiddlewares.redirect import RedirectMiddleware
 
 class Redirect_Middleware(RedirectMiddleware):
@@ -19,13 +19,13 @@ class Redirect_Middleware(RedirectMiddleware):
         # 处理请求失败 再次存入redis
         rhandler = RedisHandler()
         if http_code // 100 == 3 or http_code // 100 == 4:
-            print("###[ERROR] Spider Request returned abnormal page.Error Code: {} ###".format(http_code))
+            print("###[ERROR] Redirect_Middleware Spider Request returned abnormal page.Error Code: {} ###".format(http_code))
             flag = rhandler.insertSelectURL(search, request.url)
             if flag != 0:
-                print('###[SUCCESS] Select URL {} : {} >>>> Redis {} select_urls ###'.format(search, request.url,
+                print('###[INFO] Redirect_Middleware Select URL {} : {} >>>> Redis {} select_urls ###'.format(search, request.url,
                                                                                              search))
             else:
-                print('###[ERROR] Select URL {} : {} |||| Redis {} select_urls ###'.format(search, request.url,
+                print('###[ERROR] Redirect_Middleware Select URL {} : {} |||| Redis {} select_urls ###'.format(search, request.url,
                                                                                            search))
         rhandler.close()
         #

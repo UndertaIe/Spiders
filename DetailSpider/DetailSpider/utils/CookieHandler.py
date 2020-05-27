@@ -6,21 +6,24 @@ from ..settings import COOKIE_METHOD
 
 def getCookie():
     url = COOKIE_URL+COOKIE_METHOD['get']
+    cookie = None
     try:
         r = requests.get(url=url,timeout=3,headers={"UserAgent":"-*-DetailSpider-*-"})
-        cookie = r.json()
+        if r.status_code == 200:
+            cookie = r.json()
         r.close()
     except RequestException as e:
-        print("###[ERROR] 请求Cookie失败 ###")
+        print("###[ERROR] CookieHandler.getCookie RequestException ###")
     return cookie
 def getCookeCount():
     url = COOKIE_URL + COOKIE_METHOD['count']
+    count = None
     try:
         r = requests.get(url=COOKIE_URL,timeout=3,headers={"UserAgent":"-*-DetailSpider-*-"})
         count = int(r.text)
         r.close()
     except RequestException as e:
-        print("###[ERROR] 请求Cookie Count失败 ###")
+        print("###[ERROR] CookieHandler.getCookeCount RequestException ###")
     return count
 
 
