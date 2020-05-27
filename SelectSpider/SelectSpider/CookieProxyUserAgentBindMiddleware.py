@@ -10,7 +10,6 @@ class CookieProxyUserAgentBindMiddleware(object):
     def process_request(self, request, spider):
         """从redis获取生成的cookie包括生成参数依次有Cookie，proxy，ua"""
         cookieAndProxy = getCookie()
-        cookieAndProxy={}
         cookieKey = "__zp_stoken__"
         if cookieAndProxy is not None:
             # 设置cookie

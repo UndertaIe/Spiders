@@ -16,10 +16,10 @@ class CookieProxyUserAgentBindMiddleware(object):
             cookie = {cookieKey:cookieAndProxy[cookieKey]}
             request.cookies = cookie
             # 设置与cookie绑定生成的proxy
-            proxy = cookieAndProxy['proxy']
+            proxy = cookieAndProxy.get('proxy')
             request.meta['proxy'] = 'http://' + proxy
             #设置与cookie绑定生成的User-Agent
-            ua = cookieAndProxy['ua']
+            ua = cookieAndProxy.get('ua')
             request.headers.setdefault('User-Agent', ua)
         else:
             print("###[WARNING] Spider request didn't carry Cookie,Proxy,UserAgent,request may return error page ###")
