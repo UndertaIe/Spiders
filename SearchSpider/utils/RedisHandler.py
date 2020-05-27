@@ -11,6 +11,7 @@ class RedisHandler:
             redis_port = port or REDIS_PARAMS['port']
             redis_pwd = pwd or REDIS_PARAMS['password']
             self.con = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd)
+            # self.con = redis.StrictRedis(host=redis_host, port=redis_port)
         except ConnectionError:
             print("###[ERROR] Redis Connection Error ###")
         self.search = search

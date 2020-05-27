@@ -13,7 +13,7 @@ def getHotCity():
 
 def getAllCity():
     try:
-        f = open("citys.json", 'r', encoding='utf-8')
+        f = open("utils/citys.json", 'r', encoding='utf-8')
         cityJson = json.loads(f.read())
     except:
         print("###[WARNING] 文件读取城市失败 ###")

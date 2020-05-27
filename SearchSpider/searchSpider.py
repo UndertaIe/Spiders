@@ -41,7 +41,7 @@ def task(List="",Path="",hotCity=HOTCITY,searchKey=SEARCH):
     except KeyboardInterrupt:
         pass
     except:
-        print("###[WARNING]Unknown ERROR occurred,Exiting...... ###")
+        print("###[WARNING] Unknown ERROR occurred,Exiting...... ###")
         os.system("taskkill /im chrome.exe /F")
         os.system("taskkill /im chromedriver.exe /F")
         sys.exit(0)

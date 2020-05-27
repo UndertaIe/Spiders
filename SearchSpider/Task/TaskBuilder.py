@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from utils.RedisHandler import RedisHandler
-from utils.cityUitl import getHotCity
+from utils.cityUitl import getHotCity,getAllCity
 from utils.DriverHandler import getDriver
 from utils.SleepUtil import sleepClear,sleepInput,sleepClick,sleepGet
 from selenium.webdriver.common.keys import Keys
@@ -93,7 +93,7 @@ def allCitySearch(driver,oneSearch):
 
     Count = 0
     r2 = RedisHandler()
-    provs = getHotCity()
+    provs = getAllCity()
 
     # 从官网搜索栏过渡 防止识别爬虫
     driver.get("https://www.zhipin.com/")
@@ -101,7 +101,9 @@ def allCitySearch(driver,oneSearch):
     driver.find_element_by_xpath('//div[@class="search-form-con"]/p/input').send_keys(oneSearch)
     # sleepInput()
     # 获取按钮对象并点击
-    driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[1]/form/div/button').click()
+    button1 = driver.find_element_by_xpath('//button[@class="btn btn-search"]')
+    driver.execute_script("arguments[0].click();", button1)
+    # driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[1]/form/div/button').click()
     sleepClick()
     for prov in provs.keys():
         for city in provs[prov]:
@@ -126,19 +128,19 @@ def allCitySearch(driver,oneSearch):
                 selectUrl = driver.current_url
                 # 插入城市查询URL
                 flag = r2.insertSelectURL(oneSearch, selectUrl)
-                if driver.flag == 1:
-                    mes = ('###[SUCCESS] Select URL {} : {} >>> Redis {} select_urls ###'.format(city, selectUrl,oneSearch))
+                if flag > 0:
+                    mes = ('###[SUCCESS] Select URL <{}> : {} >>> Redis <{}> select_urls ###'.format(city, selectUrl,oneSearch))
                     Count += 1
                     sys.stdout.write(mes + '\n')
                     sys.stdout.flush()
                 else:
-                    mes = ('###[WARNING] Select URL {} : {} -|- Redis {} select_urls ###'.format(city, selectUrl,oneSearch))
+                    mes = ('###[WARNING] Select URL <{}> : {} -|- Redis <{}> select_urls ###'.format(city, selectUrl,oneSearch))
                     sys.stdout.write(mes + '\n')
                     sys.stdout.flush()
 
 
     search_len = r2.getSearchsLen()
-    mes = ('\n###[INFO] HotCity Search <{}> end. Search Select Item count: <{}>.Redis Search remain <{}>###\n'.format(
+    mes = ('\n###[INFO] AllCity Search <{}> end. Search Select Item count: <{}>.Redis Search remain <{}>###\n'.format(
         oneSearch, Count, search_len))
     sys.stdout.write(mes + '\n')
     sys.stdout.flush()
