@@ -38,6 +38,7 @@ def getChromeDriver():
 
     logging.getLogger('requests').setLevel(logging.ERROR)
     if platform.system()=="Windows":
+        # $需要将chromedriver.exe放到path中$
         driver = webdriver.Chrome(options=options, executable_path="chromedriver.exe")
     else:
         driver = webdriver.Chrome(options=options, executable_path="chromedriver")
