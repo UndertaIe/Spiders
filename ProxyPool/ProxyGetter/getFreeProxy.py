@@ -219,7 +219,7 @@ class GetFreeProxy(object):
     @staticmethod
     def freeProxy08():
         """
-        IP海 http://www.iphai.com/free/ng
+        IP海 http://www.iphai.com/free/ng  2020.5.28无效
         :return:
         """
         urls = [
