@@ -33,15 +33,15 @@ HEADER = """
 
 PY3 = sys.version_info >= (3,)
 
-DB_TYPE = getenv('db_type', 'redis').upper()
-DB_HOST = getenv('db_host', '101.200.79.28')
-DB_PORT = getenv('db_port', 6378)
-DB_PASSWORD = getenv('db_password', 'myredis0')
-
 # DB_TYPE = getenv('db_type', 'redis').upper()
-# DB_HOST = getenv('db_host', '127.0.0.1')
-# DB_PORT = getenv('db_port', 6379)
-#DB_PASSWORD = getenv('db_password', 'myredis0')
+# DB_HOST = getenv('db_host', '101.200.79.28')
+# DB_PORT = getenv('db_port', 6378)
+# DB_PASSWORD = getenv('db_password', 'myredis0')
+
+DB_TYPE = getenv('db_type', 'redis').upper()
+DB_HOST = getenv('db_host', '127.0.0.1')
+DB_PORT = getenv('db_port', 6379)
+DB_PASSWORD = getenv('db_password', 'myredis0')
 
 """ 数据库配置 """
 DATABASES = {

@@ -19,34 +19,36 @@ class RedisHanler(DbHanlder):
         redis_pwd = pwd or REDIS_PARAMS['password']
         redis_db = pwd or REDIS_PARAMS['db']
         self.redis = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd, db=redis_db)
+        # self.redis = redis.StrictRedis(host=redis_host, port=redis_port, db=redis_db)
         self.key = "Cookies"
         self.redis.expire(self.key,config.EXPIRE_TIME)  #设置过期时间
         self.reuse = COOKIEMAXUSE
-    #插入cookie
+
+
+    # 插入cookie
     def insert(self,cookie):
         try:
             result = self.redis.zadd(self.key,{json.dumps(cookie):1})
         except RedisError:
-            print("!!!redis cookie insert error!!!")
+            print("###[ERROR] RedisHanler.insert ERROR ###")
         return result
-    #返回所有cookie
-    def select(self,cookie):
+
+    # 返回所有cookie
+    def select(self):
         try:
-            cookies = self.redis.zrevrangebyscore(self.key, '+inf', '-inf', start=0,num=500)
+            cookies = self.redis.zrevrangebyscore(self.key, '+inf', '-inf', start=0,num=100)
         except RedisError:
-            print("!!!redis cookie select error!!!")
-        if cookies is not None:
-            return cookies
-        else:
-            print("No data")
-            return None
-    #得到随机cookie
+            print("###[ERROR] RedisHanler.select ERROR ###")
+
+        return cookies if cookies is not None else None
+
+    # 得到随机cookie
     def get(self):
         while True:
             try:
                 result = self.redis.zrevrangebyscore(self.key,'+inf','-inf',start=0,num=1)
             except RedisError:
-                print("!!!redis cookie get error!!!")
+                print("###[ERROR] RedisHanler.get ERROR ###")
                 break
             if result is None:
                 return {}
@@ -66,14 +68,16 @@ class RedisHanler(DbHanlder):
                 break
         return cookie
 
+
+    # 得到cookie个数
     def count(self):
         cookie_count = None
         try:
             cookie_count = self.redis.zcard(self.key)
         except RedisError:
-            print("!!!redis cookie count error!!!")
+            print("###[ERROR] RedisHanler.count ERROR ###")
         return cookie_count if cookie_count is not None else 0
 
-    #去除cookie
+    #去除cookie 对于持久性cookie可实现并采取定时删除
     def remove(self):
         pass

@@ -39,18 +39,18 @@ class CookieGenerator:
 
     def run(self):
         while True:
-            mes =" | CookiePool | ------>>>>>>>>begining"
+            mes =" | CookiePool | ------>>>>>>>>Begining"
             sys.stdout.write(mes+'\r\n')
             sys.stdout.flush()
             self.cookieCounter.value = self.handler.count()
-            mes = ' | CookiePool | ------>>>>>>>>db exists cookie:%d' % self.cookieCounter.value
+            mes = ' | CookiePool | ------>>>>>>>>db exists cookie:{}'.format(self.cookieCounter.value)
             if self.cookieCounter.value < self.gen_cookie_num.value:
-                mes += '\r\n | CookiePool | ------>>>>>>>>now cookie num < MINNUM,start gernerating...'
+                mes += '\r\n | CookiePool | ------>>>>>>>>Now cookie num < MINNUM,start gernerating...'
                 sys.stdout.write(mes + "\r\n")
                 sys.stdout.flush()
                 self.cookie_pool.map(self.getCookie,COOKIE_URLS)
             else:
-                mes += '\r\n | CookiePool | ------>>>>>>>>now cookie num meet the requirement,wait UPDATE_TIME...'
+                mes += '\r\n | CookiePool | ------>>>>>>>>Now cookie num meet the requirement,wait UPDATE_TIME...'
                 mes += '\r\n | CookiePool | ------>>>>>>>>Sleep now......'
                 sys.stdout.write(mes + "\r\n")
                 sys.stdout.flush()
@@ -63,11 +63,11 @@ class CookieGenerator:
         if ua is not None:
             lua_source.replace("*UA*", ua)
         if aproxy is not None:
-            proxy = aproxy['proxy']
+            proxy = aproxy.get('proxy')
             proxy_host,proxy_port = proxy.split(':')
             lua_source = lua_source.replace("*proxy_host*",proxy_host)   #在lua脚本中更换IP代理
             lua_source = lua_source.replace("*proxy_port*", proxy_port)
-        data = {'timeout': 20, 'lua_source': lua_source}
+        data = {'timeout': 10, 'lua_source': lua_source}
         try:
             r = requests.post(url=self.splashUrl, data=json.dumps(data), headers={'Content-Type': 'application/json'}, auth=(SplashAuthUser,SplashAuthPwd))
         except:
@@ -79,10 +79,10 @@ class CookieGenerator:
                 cookie.setdefault('proxy',proxy)
                 cookie.setdefault('ua',ua)
                 self.buffer.put(cookie)
-        sleepRandom()#防止频率过高封IP
+        sleepRandom(3)#防止频率过高封IP
 
     @staticmethod
     def splash2cookie(raw_cookies):
         key = "__zp_stoken__"
         if isinstance(raw_cookies,list):
-            return { key:cookie['value'] for cookie in raw_cookies if key == cookie.get('name') }
+            return { key:cookie.get('value') for cookie in raw_cookies if key == cookie.get('name') }

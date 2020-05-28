@@ -71,8 +71,8 @@ class BossSelectPipeline:
         col = bossItem['search']
         result = self.db[col].insert_one(bossItem)
         if result is not None:
-            print('###[SUCCESS] the {} bossItem >>> MongoDB {} Collection ###'.format(bossItem['url'], col))
+            print('###[SUCCESS] the {} bossItem >>> MongoDB <{}> Collection ###'.format(bossItem['url'], col))
         else:
-            print('###[WARNING] the {} bossItem -|- MongoDB {} Collection ###'.format(bossItem['url'], col))
+            print('###[WARNING] the {} bossItem -|- MongoDB <{}> Collection ###'.format(bossItem['url'], col))
         #不显示到屏幕
         #return item

@@ -5,7 +5,7 @@ from config import PROXY_URL,PROXY_METHOD
 def getProxy():
     url =PROXY_URL+PROXY_METHOD["get"]
     try:
-        aproxy = requests.get(url,headers={"UserAgent":"-*-SearchSpider-*-"}).json()
+        aproxy = requests.get(url,headers={"User-Agent":"-*-SearchSpider-*-"}).json()
     except ConnectionError:
         print("###[ERROR] GetProxy Error ###")
     return aproxy
@@ -14,7 +14,7 @@ def getProxy():
 def getAllProxy():
     url = PROXY_URL+PROXY_METHOD["get_all"]
     try:
-        proxies = requests.get(url,headers={"UserAgent":"-*-SearchSpider-*-"}).json()
+        proxies = requests.get(url,headers={"User-Agent":"-*-SearchSpider-*-"}).json()
     except ConnectionError:
         print("###[ERROR] GetAllProxy Error ###")
     return proxies
@@ -23,7 +23,7 @@ def getAllProxy():
 def getProxyCount():
     url = PROXY_URL+PROXY_METHOD["get_status"]
     try:
-        count = requests.get(url,headers={"UserAgent":"-*-SearchSpider-*-"}).json()
+        count = requests.get(url,headers={"User-Agent":"-*-SearchSpider-*-"}).json()
     except ConnectionError:
         print("###[ERROR] GetProxy Count Error ###")
     return count

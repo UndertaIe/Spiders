@@ -22,7 +22,7 @@ cli:
 '''
 class BossDetailSpider(RedisSpider):
     #爬虫名
-    name = "bossDetail"
+    name = "boss"
     #scrapy-redis启动请求
     redis_key = "Boss:{}:detail_urls"
 
@@ -32,7 +32,7 @@ class BossDetailSpider(RedisSpider):
         self.search = search
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
         self.singleSearch = single
-        print("###[INFO] Spider {} is running... ###".format(self.name))
+        print("###[INFO] Boss Detail Spider <{}> is running... ###".format(self.name))
 
     #从detail_urls拿到详情页面，得到搜集的数据。
     def parse(self, response):

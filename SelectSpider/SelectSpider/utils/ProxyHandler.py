@@ -6,7 +6,7 @@ def getProxy():
     url =PROXY_URL+PROXY_METHOD["get"]
     aproxy = None
     try:
-        r = requests.get(url,headers={"UserAgent":"-*-SelectSpider-*-"},timeout=3)
+        r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code==200:
             aproxy = r.json()
     except ConnectionError:
@@ -18,7 +18,7 @@ def getAllProxy():
     url = PROXY_URL+PROXY_METHOD["get_all"]
     proxies = None
     try:
-        r = requests.get(url,headers={"UserAgent":"-*-SelectSpider-*-"},timeout=3)
+        r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code==200:
             proxies = r.json()
     except ConnectionError:
@@ -30,7 +30,7 @@ def getProxyCount():
     count = None
     url = PROXY_URL+PROXY_METHOD["get_status"]
     try:
-        r = requests.get(url,headers={"UserAgent":"-*-SelectSpider-*-"},timeout=3)
+        r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code == 200:
             count = r.json()
     except ConnectionError:

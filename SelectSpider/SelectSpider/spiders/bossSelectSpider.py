@@ -26,7 +26,7 @@ cli:
 
 class BossSelectSpider(RedisSpider):
     #爬虫名
-    name = "bossSelect"
+    name = "boss"
     #scrapy-redis启动请求
     redis_key = "Boss:{}:select_urls"
 
@@ -34,11 +34,11 @@ class BossSelectSpider(RedisSpider):
         super(BossSelectSpider, self).__init__(*args,**kwargs)
 
         # 搜索名
-        self.search = search if search!="" else "noob"
+        self.search = search
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
         self.singleSearch = single
         self.redisHandler = RedisHandler()
-        print("###[INFO] Spider {} is running... ###".format(self.name))
+        print("###[INFO] Boss Select Spider <{}> is running... ###".format(self.name))
 
     #从select_urls拿到master搜索的得到的url，通过此url拿到下一页的url和此页面的工作详情url
     def parse(self, response):
@@ -63,7 +63,7 @@ class BossSelectSpider(RedisSpider):
                 if re.findall(city,job_adrs) is None:
                     error_select_count += 1
                     if error_select_count >= 5:  # 不匹配数据次数大于5次退出
-                        print("###[WARNING] No data match {} .Exit the current page ###".format(city))
+                        print("###[INFO] No content match <{}> .Exit the current page ###".format(city))
                         break
 
                 relative_url = ''.join(job_table.xpath(
@@ -72,25 +72,25 @@ class BossSelectSpider(RedisSpider):
                 detail_url = urljoin(base_url, relative_url)
                 flag = self.redisHandler.insertDetailURL(detail_url)
                 if flag != 0:
-                    mes = '###[SUCCESS] Select URL {} : {} >>> Redis {} detail_urls ###'.format(job_adrs, detail_url, self.search)
+                    mes = '###[SUCCESS] Select URL <{}> : {} >>> Redis <{}> detail_urls ###'.format(job_adrs, detail_url, self.search)
                     sys.stdout.write(mes + '\n')
                     sys.stdout.flush()
                 else:
-                    mes = '###[WARNING] Select URL {} : {} -|- Redis {} detail_urls ###'.format(job_adrs, detail_url, self.search)
+                    mes = '###[WARNING] Select URL <{}> : {} -|- Redis <{}> detail_urls ###'.format(job_adrs, detail_url, self.search)
                     sys.stdout.write(mes + '\n')
                     sys.stdout.flush()
 
         #准备获取下一页面  不符合搜索城市
-        if len(jobList) == 30 and error_select_count<10:
+        if len(jobList) == 30 and error_select_count<5:
             # 获取当前页面的下一页URL
             next_relative_url = "".join(list_selector.xpath('//a[@ka="page-next"]/@href').extract()).strip()
             if  next_relative_url != "javascript:;":
                 next_select_url = urljoin(base_url,next_relative_url)
                 # 获取当前页面的下一页URL
                 self.redisHandler.insertSelectURL(next_select_url)
-                print("###[SUCCESS] Select URL {} : {} >>> Redis {} select_urls ###".format(city,next_select_url,self.search))
+                print("###[SUCCESS] Select URL {} : {} >>> Redis <{}> select_urls ###".format(city,next_select_url,self.search))
             else:
-                print("### 城市 {} 查询已结束 #".format(city))
+                print("###[INFO] Search <{}> City <{}> all over #".format(self.search, city))
         else:
-            print("### 城市 {} 查询已结束 ###".format(city))
+            print("###[INFO] Search <{}> City <{}> all over #".format(self.search, city))
         sleepRandom(1)

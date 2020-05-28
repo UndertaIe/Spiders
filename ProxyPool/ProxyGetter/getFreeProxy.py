@@ -355,7 +355,7 @@ class GetFreeProxy(object):
         base_url = "https://ip.ihuan.me"
         urls = [base_url+l for l in lst]
         for url in urls:
-            res2 = request.get(url, timeout=10)
+            res2 = request.get(url, timeout=20)
             ips = re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}", res2.text)
             for ip in ips:
                 yield ip.strip()
@@ -370,7 +370,7 @@ class GetFreeProxy(object):
         urls.extend([raw_url + str(index + 1) for raw_url in raw_urls for index in range(20)])
         request = WebRequest()
         for url in urls:
-            res = request.get(url,timeout=10)
+            res = request.get(url,timeout=20)
             ips = re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}", res.text)
             for ip in ips:
                 yield ip.strip()

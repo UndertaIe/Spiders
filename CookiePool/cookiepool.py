@@ -15,20 +15,20 @@ def gen(count=COOKIE_MIN):
         genCount = Value('i',count) #需要生成的个数
         buffer = Queue()
         Pro1 = Process(target=startCookiePool, args=(buffer, CookieCounter,genCount))
-        Pro2 = Process(target=startCookiePool, args=(buffer, CookieCounter, genCount))
+        # Pro2 = Process(target=startCookiePool, args=(buffer, CookieCounter, genCount))
         Save = Process(target=storeCookie, args=(buffer, CookieCounter))
         Pro1.start()
-        Pro2.start()
+        # Pro2.start()
         Save.start()
         Pro1.join()
-        Pro2.join()
+        # Pro2.join()
         Save.join()
     except KeyboardInterrupt:
         sys.exit(0)
     except:
         sys.exit(0)
 
-def api(ip="127.0.0.1",port=7788):
+def api(ip="127.0.0.1",port=7700):
     start_cookie_server(ip=ip,port=port)
 
 if __name__ == "__main__":
