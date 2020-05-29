@@ -12,10 +12,32 @@
 """
 __author__ = 'JHao'
 
-from Util import validUsefulProxy,validRawProxy
+from Util import validUsefulProxy,validRawProxy,validChargeProxy
 
 from datetime import datetime
 
+def checkChargeProxyUseful(proxy_obj,myip):
+    """
+    检测匿名IP
+    :param proxy_obj:
+    :param myip:
+    :return:
+    """
+    if validChargeProxy(proxy_obj.proxy,myip):
+        # 检测通过 更新proxy属性
+        proxy_obj.check_count += 1
+        proxy_obj.last_status = 1
+        proxy_obj.type = "1"
+        proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        if proxy_obj.fail_count > 0:
+            proxy_obj.fail_count -= 1
+        return proxy_obj, True
+    else:
+        proxy_obj.check_count += 1
+        proxy_obj.last_status = 0
+        proxy_obj.last_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        proxy_obj.fail_count += 1
+        return proxy_obj, False
 
 def checkProxyUseful(proxy_obj,myip):
     """

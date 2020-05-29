@@ -11,7 +11,7 @@ class RedisHandler:
             redis_pwd = pwd or REDIS_PARAMS['password'] #远程连接密码认证
             self.con = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd)#远程密码认证
             # self.con = redis.StrictRedis(host=redis_host, port=redis_port, db=0) #本地认证
-        except ConnectionError:
+        except:
             print("###[ERROR] RedisHandler.Connection ConnectionError ###")
         self.site = search.split(':')[0]
         self.search = search

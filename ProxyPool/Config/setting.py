@@ -54,6 +54,12 @@ DATABASES = {
     }
 }
 
+# register the charge proxy function
+CHARGE_PROXY_GETTER = [
+    "chargeProxy01",
+]
+
+
 # register the proxy getter function
 
 PROXY_GETTER = [
@@ -72,6 +78,8 @@ PROXY_GETTER = [
     'freeProxy16',
     'freeProxy17',
 ]
+
+
 
 """ API config http://127.0.0.1:5010 """
 SERVER_API = {

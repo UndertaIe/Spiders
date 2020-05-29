@@ -11,7 +11,7 @@ class RedisHandler:
             redis_pwd = pwd or REDIS_PARAMS['password'] #密码认证
             self.con = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_pwd) #密码认证
             # self.con = redis.StrictRedis(host=redis_host, port=redis_port, db=0) #本地无密码认证
-        except ConnectionError:
+        except:
             print("###[ERROR] RedisHandler.Connection ConnectionError ###")
         self.site = search.split(':')[0] #示例为Boss 可在setting中修改爬取网站名
         self.search = search

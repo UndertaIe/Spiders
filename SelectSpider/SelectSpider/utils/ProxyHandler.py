@@ -9,9 +9,22 @@ def getProxy():
         r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code==200:
             aproxy = r.json()
-    except ConnectionError:
-        print("###[ERROR] ProxyHandler.getProxy ConnectionError ###")
+    except:
+        print("###[ERROR] ProxyHandler.getProxy RequestException ###")
     return aproxy
+
+#获取一随机收费代理
+def getChargeProxy():
+    aproxy = None
+    url =PROXY_URL+PROXY_METHOD["get_charge"]
+    try:
+        r = requests.get(url,headers={"User-Agent":"-*-DetailSpider-*-"},timeout=3)
+        if r.status_code==200:
+            aproxy = r.json()
+    except:
+        print("###[ERROR] ProxyHandler.getChargeProxy RequestException ###")
+    return aproxy
+
 
 #获取服务器所有代理
 def getAllProxy():
@@ -21,8 +34,8 @@ def getAllProxy():
         r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code==200:
             proxies = r.json()
-    except ConnectionError:
-        print("###[ERROR] ProxyHandler.getAllProxy ConnectionError ###")
+    except:
+        print("###[ERROR] ProxyHandler.getAllProxy RequestException ###")
     return proxies
 
 #获取服务器代理数
@@ -33,8 +46,8 @@ def getProxyCount():
         r = requests.get(url,headers={"User-Agent":"-*-SelectSpider-*-"},timeout=3)
         if r.status_code == 200:
             count = r.json()
-    except ConnectionError:
-        print("###[ERROR] ProxyHandler.getProxyCount ConnectionError ###")
+    except:
+        print("###[ERROR] ProxyHandler.getProxyCount RequestException ###")
     return count
 
 if __name__ == "__main__":

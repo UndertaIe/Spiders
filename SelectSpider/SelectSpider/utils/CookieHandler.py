@@ -12,7 +12,7 @@ def getCookie():
         if r.status_code==200:
             cookie = r.json()
         r.close()
-    except RequestException as e:
+    except:
         print("###[ERROR] CookieHandler.getCookie RequestException ###")
     return cookie if cookie!= {} and cookie is not None else None
 def getCookeCount():
@@ -21,7 +21,7 @@ def getCookeCount():
     try:
         r = requests.get(url=COOKIE_URL,timeout=3,headers={"UserAgent":"-*-SelectSpider-*-"})
         count = int(r.text)
-    except RequestException as e:
+    except:
         print("###[ERROR] CookieHandler.getCookeCount RequestException ###")
     return count
 

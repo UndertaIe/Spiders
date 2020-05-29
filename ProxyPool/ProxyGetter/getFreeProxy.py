@@ -29,12 +29,6 @@ class GetFreeProxy(object):
     """
     proxy getter
     """
-    #可添加静态稳定高速代理IP
-    @staticmethod
-    def freeProxyCustom():
-        proxies = [] #高速代理IP
-        for pro in proxies:
-            yield pro
 
     @staticmethod
     def freeProxy01():

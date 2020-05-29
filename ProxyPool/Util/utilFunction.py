@@ -88,8 +88,8 @@ def validRawProxy(proxy):
         "User-Agent": "Mozilla/5.0 (123456 NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
     }
     try:
-        r = requests.get('https://www.baidu.com', proxies=proxies, headers=headers, timeout=6)
-        return True if r.status_code == 200 else False
+        r = requests.get('https://httpbin.org', proxies=proxies, headers=headers, timeout=6)
+        return True if r.status_code == 200 else True
     except Exception as e:
         pass
     return False
@@ -108,15 +108,38 @@ def validUsefulProxy(proxy,myip):
     }
     proxies = {"http":"http://{proxy}".format(proxy=proxy), "https": "https://{proxy}".format(proxy=proxy)}
     try:
-        target_url="https://www.zhipin.com/"
-        # r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=5)
-        r = requests.get(target_url, proxies=proxies, headers=headers, timeout=6)
+        # target_url="https://www.zhipin.com/"
+        r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=5)
+        # r = requests.get(target_url, proxies=proxies, headers=headers, timeout=6)
         if r.status_code == 200:
-            # j = r.json()
+            j = r.json()
             # 返回的ip字符串 找不到本地ip则为匿名IP即find()返回-1
-            # return True if j['origin'].find(myip)==-1 else False #第一个高匿  第二个透明 看情况使用
-            return True
+            return True if j['origin'].find(myip)==-1 else False #第一个高匿  第二个透明 看情况使用
+            # return True
     except Exception as e:
         pass
     return False
 
+def validChargeProxy(proxy,myip):
+    """
+        检验收费代理是否是高匿IP
+        :param myip:
+        :param proxy:
+        :return:
+        """
+    if isinstance(proxy, bytes):
+        proxy = proxy.decode("utf8")
+    headers = {
+        "User-Agent": "Mozilla/5.0 (123456 NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
+    }
+    proxies = {"http": "http://{proxy}".format(proxy=proxy), "https": "https://{proxy}".format(proxy=proxy)}
+    try:
+        r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=5)
+        # r = requests.get(target_url, proxies=proxies, headers=headers, timeout=6)
+        if r.status_code == 200:
+            j = r.json()
+            # 返回的ip字符串 找不到本地ip则为匿名IP即find()返回-1
+            return True if j['origin'].find(myip) == -1 else False  # 第一个高匿  第二个透明 看情况使用
+    except Exception as e:
+        pass
+    return False

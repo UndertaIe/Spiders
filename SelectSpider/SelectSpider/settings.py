@@ -56,7 +56,7 @@ MONGODB_DB = "{}{}".format(SITE, SEARCH_TYPE)
 # PROXY_EXPIRE = 1 * 30 #经过30s更换代理 | 更换得到更新后的代理组并每个请求都更换代理
 
 PROXY_URL = "http://127.0.0.1:5010/"
-PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
+PROXY_METHOD = {"get":"get", "get_charge":"get_charge", "get_all":"get_all", "get_status":"get_status"}
 PROXY_EXPIRE = 1 * 30 #经过30s更换代理 | 更换得到更新后的代理组并每个请求都更换代理
 
 #========================

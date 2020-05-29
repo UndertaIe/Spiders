@@ -57,6 +57,10 @@ def get():
     proxy = ProxyManager().get()
     return proxy.info_json if proxy else {"code": 0, "src": "no proxy"}
 
+@app.route('/get_charge/')
+def get_charge():
+    proxy = ProxyManager().get_charge()
+    return proxy.info_json if proxy else {"code": 0, "src": "no proxy"}
 
 @app.route('/refresh/')
 def refresh():

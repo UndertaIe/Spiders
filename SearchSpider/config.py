@@ -29,7 +29,7 @@ REDIS_PARAMS = {
 #配置代理服务
 # PROXY_URL = "http://101.200.79.28:5010/"
 PROXY_URL = "http://127.0.0.1:5010/"
-PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
+PROXY_METHOD = {"get":"get", "get_charge":"get_charge", "get_all":"get_all", "get_status":"get_status"}
 PROXY_EXPIRE = 1 * 30
 #========================
 

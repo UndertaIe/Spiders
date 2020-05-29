@@ -20,7 +20,7 @@ def getAllProxy():
         r = requests.get(url,headers={"User-Agent":"-*-CookiePool-*-"},timeout=3)
         if r.status_code==200:
             proxies = r.json()
-    except ConnectionError:
+    except:
         print("###[ERROR] ProxyHandler.getAllProxy Error ###")
     return proxies
 
@@ -32,7 +32,7 @@ def getProxyCount():
         r = requests.get(url,headers={"User-Agent":"-*-CookiePool-*-"},timeout=3)
         if r.status_code==200:
             count = r.json()
-    except ConnectionError:
+    except:
         print("###[ERROR] ProxyHandler.getProxyCount Error ###")
     return count
 

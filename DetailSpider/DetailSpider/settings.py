@@ -55,7 +55,7 @@ MONGODB_DB = "{}{}".format(SITE, SEARCH_TYPE) #可在此修改 自定义存储�
 # PROXY_EXPIRE = 1 * 30 #代理使用时间即经过30s更换代理
 
 PROXY_URL = "http://127.0.0.1:5010/"
-PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
+PROXY_METHOD = {"get":"get", "get_charge":"get_charge", "get_all":"get_all", "get_status":"get_status"}
 PROXY_EXPIRE = 1 * 30 #代理使用时间即经过30s更换代理
 #========================
 #配置Cookie

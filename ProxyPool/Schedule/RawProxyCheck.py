@@ -1,16 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
--------------------------------------------------
-   File Name：     RawProxyCheck
-   Description :   check raw_proxy to useful
-   Author :        JHao
-   date：          2019/8/6
--------------------------------------------------
-   Change Activity:
-                   2019/8/6: check raw_proxy to useful
--------------------------------------------------
-"""
-__author__ = 'JHao'
+
+
 
 from threading import Thread
 

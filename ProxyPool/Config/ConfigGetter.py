@@ -50,6 +50,10 @@ class ConfigGetter(object):
         return PROXY_GETTER
 
     @LazyProperty
+    def charge_proxy_getter_functions(self):
+        return CHARGE_PROXY_GETTER
+
+    @LazyProperty
     def host_ip(self):
         return SERVER_API.get("HOST", "127.0.0.1")
 

@@ -1,16 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
--------------------------------------------------
-   File Name：     UsefulProxyCheck
-   Description :   check useful proxy
-   Author :        JHao
-   date：          2019/8/7
--------------------------------------------------
-   Change Activity:
-                   2019/8/7: check useful proxy
--------------------------------------------------
-"""
-__author__ = 'JHao'
+
+
 
 from threading import Thread
 
@@ -34,7 +24,7 @@ class UsefulProxyCheck(ProxyManager, Thread):
 
         self.queue = queue
         self.log = LogHandler('useful_proxy_check')
-        self.myIP = getMyIP()
+
     def run(self):
         self.log.info("UsefulProxyCheck - {}  : start".format(self.name))
         self.db.changeTable(self.useful_proxy_queue)

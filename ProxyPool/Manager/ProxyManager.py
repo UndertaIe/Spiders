@@ -20,6 +20,7 @@ from DB.DbClient import DbClient
 from Config.ConfigGetter import config
 from Util.LogHandler import LogHandler
 from Util.utilFunction import verifyProxyFormat
+from Util.MyIP import getMyIP
 from ProxyGetter.getFreeProxy import GetFreeProxy
 
 
@@ -33,10 +34,40 @@ class ProxyManager(object):
         self.raw_proxy_queue = 'raw_proxy'
         self.log = LogHandler('proxy_manager')
         self.useful_proxy_queue = 'useful_proxy'
+        self.charge_proxy_queue  = "charge_proxy"
+        self.myIP = getMyIP()
+
+    def fetchCharge(self):
+        self.db.changeTable(self.charge_proxy_queue)
+        charge_proxy_set = set()
+        self.log.info("ChargeProxyFetch : start")
+        for proxyGetter in config.charge_proxy_getter_functions:
+            self.log.info("ChargeProxyFetch - {func}: start".format(func=proxyGetter))
+            try:
+                for proxy in getattr(GetFreeProxy, proxyGetter.strip())():
+                    proxy = proxy.strip()
+
+                    if not proxy or not verifyProxyFormat(proxy):
+                        self.log.error('ChargeProxyFetch - {func}: '
+                                       '{proxy} illegal'.format(func=proxyGetter, proxy=proxy.ljust(20)))
+                        continue
+                    elif proxy in charge_proxy_set:
+                        self.log.info('ChargeProxyFetch - {func}: '
+                                      '{proxy} exist'.format(func=proxyGetter, proxy=proxy.ljust(20)))
+                        continue
+                    else:
+                        self.log.info('ChargeProxyFetch - {func}: '
+                                      '{proxy} success'.format(func=proxyGetter, proxy=proxy.ljust(20)))
+                        self.db.put(Proxy(proxy, source=proxyGetter))
+                        charge_proxy_set.add(proxy)
+            except Exception as e:
+                self.log.error("ChargeProxyFetch - {func}: error".format(func=proxyGetter))
+                self.log.error(str(e))
+
 
     def fetch(self):
         """
-        fetch proxy into db by ProxyGetter
+        fetch free proxy into db by ProxyGetter
         :return:
         """
         self.db.changeTable(self.raw_proxy_queue)
@@ -71,6 +102,17 @@ class ProxyManager(object):
         :return:
         """
         self.db.changeTable(self.useful_proxy_queue)
+        item_list = self.db.getAll()
+        if item_list:
+            random_choice = random.choice(item_list)
+            return Proxy.newProxyFromJson(random_choice)
+        return None
+
+    def get_charge(self):
+        """
+        :return: charge proxy
+        """
+        self.db.changeTable(self.charge_proxy_queue)
         item_list = self.db.getAll()
         if item_list:
             random_choice = random.choice(item_list)
