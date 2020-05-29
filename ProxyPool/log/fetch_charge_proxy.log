@@ -1,0 +1,36 @@
+2020-05-29 12:18:37,815 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 12:18:37,816 ProxyManager.py[line:43] INFO ChargeProxyFetch : start
+2020-05-29 12:18:37,817 ProxyManager.py[line:45] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 12:18:37,817 ProxyManager.py[line:64] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 12:18:37,818 ProxyManager.py[line:65] ERROR type object 'GetFreeProxy' has no attribute 'chargeProxy01'
+2020-05-29 12:18:37,819 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 12:28:37,841 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 12:28:37,842 ProxyManager.py[line:43] INFO ChargeProxyFetch : start
+2020-05-29 12:28:37,842 ProxyManager.py[line:45] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 12:28:37,843 ProxyManager.py[line:64] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 12:28:37,843 ProxyManager.py[line:65] ERROR type object 'GetFreeProxy' has no attribute 'chargeProxy01'
+2020-05-29 12:28:37,843 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 12:38:37,774 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 12:38:37,781 ProxyManager.py[line:43] INFO ChargeProxyFetch : start
+2020-05-29 12:38:37,782 ProxyManager.py[line:45] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 12:38:37,786 ProxyManager.py[line:64] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 12:38:37,790 ProxyManager.py[line:65] ERROR type object 'GetFreeProxy' has no attribute 'chargeProxy01'
+2020-05-29 12:38:37,790 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 12:48:37,854 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 12:48:37,854 ProxyManager.py[line:43] INFO ChargeProxyFetch : start
+2020-05-29 12:48:37,855 ProxyManager.py[line:45] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 12:48:37,855 ProxyManager.py[line:64] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 12:48:37,855 ProxyManager.py[line:65] ERROR type object 'GetFreeProxy' has no attribute 'chargeProxy01'
+2020-05-29 12:48:37,855 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 13:05:33,066 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 13:05:33,067 ProxyManager.py[line:43] INFO ChargeProxyFetch : start
+2020-05-29 13:05:33,070 ProxyManager.py[line:45] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 13:05:33,073 ProxyManager.py[line:64] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 13:05:33,074 ProxyManager.py[line:65] ERROR type object 'GetFreeProxy' has no attribute 'chargeProxy01'
+2020-05-29 13:05:33,075 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 13:08:02,267 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 13:08:02,267 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 13:08:02,271 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 13:08:02,273 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 13:08:02,274 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 13:08:02,274 ProxyScheduler.py[line:36] INFO finish fetch charge proxy

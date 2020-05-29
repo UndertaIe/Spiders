@@ -16,12 +16,12 @@ requests.packages.urllib3.disable_warnings()
 
 class GetChargeProxy(object):
     """
-    get charge Proxy
+    get charge Proxy 此类添加收费代理，添加后需在setting中注册代理方法
     """
     @staticmethod
     def chargeProxy01():
         """
-            芝麻代理 高效稳定 就是有点贵
+            芝麻代理 高效稳定 收费
         """
         # zhima_url = ""
         # request = WebRequest()

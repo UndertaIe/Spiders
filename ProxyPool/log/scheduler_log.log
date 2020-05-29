@@ -779,3 +779,104 @@
 2020-05-29 09:53:32,956 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 09:55:32.951276+08:00 (in 119.994642 seconds)
 2020-05-29 09:55:32,954 base.py[line:926] DEBUG Looking for jobs to run
 2020-05-29 09:55:32,955 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 09:57:32.950280+08:00 (in 119.994603 seconds)
+2020-05-29 12:08:37,235 base.py[line:433] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-05-29 12:08:37,236 base.py[line:433] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-05-29 12:08:37,236 base.py[line:433] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-05-29 12:08:37,236 base.py[line:433] INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-05-29 12:08:37,238 base.py[line:867] INFO Added job "useful_proxy定时检查" to job store "default"
+2020-05-29 12:08:37,238 base.py[line:867] INFO Added job "charge_proxy定时采集" to job store "default"
+2020-05-29 12:08:37,239 base.py[line:867] INFO Added job "charge_proxy定时检查" to job store "default"
+2020-05-29 12:08:37,239 base.py[line:867] INFO Added job "raw_proxy定时采集" to job store "default"
+2020-05-29 12:08:37,240 base.py[line:159] INFO Scheduler started
+2020-05-29 12:08:37,240 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:08:37,241 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:09:37.236526+08:00 (in 59.996001 seconds)
+2020-05-29 12:09:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:09:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:10:37.235533+08:00 (in 59.996683 seconds)
+2020-05-29 12:10:37,239 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:10:37,247 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:11:37.236526+08:00 (in 59.996291 seconds)
+2020-05-29 12:11:37,246 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:11:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:12:37.235533+08:00 (in 59.987830 seconds)
+2020-05-29 12:12:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:12:37,254 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:13:37.236526+08:00 (in 59.986492 seconds)
+2020-05-29 12:13:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:13:37,251 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:14:37.235533+08:00 (in 59.986721 seconds)
+2020-05-29 12:14:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:14:37,254 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:15:37.236526+08:00 (in 59.988233 seconds)
+2020-05-29 12:15:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:15:37,253 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:16:37.235533+08:00 (in 59.985068 seconds)
+2020-05-29 12:16:37,249 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:16:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:17:37.236526+08:00 (in 59.986410 seconds)
+2020-05-29 12:17:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:17:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:18:37.235533+08:00 (in 59.985227 seconds)
+2020-05-29 12:18:37,246 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:18:37,247 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:19:37.236526+08:00 (in 59.989661 seconds)
+2020-05-29 12:19:37,249 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:19:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:20:37.235533+08:00 (in 59.986192 seconds)
+2020-05-29 12:20:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:20:37,247 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:21:37.236526+08:00 (in 59.989108 seconds)
+2020-05-29 12:21:37,253 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:21:37,255 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:22:37.235533+08:00 (in 59.980949 seconds)
+2020-05-29 12:22:37,240 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:22:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:23:37.236526+08:00 (in 59.996083 seconds)
+2020-05-29 12:23:37,239 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:23:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:24:37.235533+08:00 (in 59.995892 seconds)
+2020-05-29 12:24:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:24:37,239 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:25:37.236526+08:00 (in 59.998232 seconds)
+2020-05-29 12:25:37,239 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:25:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:26:37.235533+08:00 (in 59.995841 seconds)
+2020-05-29 12:26:37,237 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:26:37,238 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:27:37.236526+08:00 (in 59.998611 seconds)
+2020-05-29 12:27:37,240 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:27:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:28:37.235533+08:00 (in 59.995242 seconds)
+2020-05-29 12:28:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:28:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:29:37.236526+08:00 (in 59.996880 seconds)
+2020-05-29 12:29:37,258 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:29:37,258 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:30:37.235533+08:00 (in 59.977167 seconds)
+2020-05-29 12:30:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:30:37,238 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:31:37.236526+08:00 (in 59.998519 seconds)
+2020-05-29 12:31:37,241 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:31:37,242 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:32:37.235533+08:00 (in 59.993245 seconds)
+2020-05-29 12:32:37,240 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:32:37,240 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:33:37.236526+08:00 (in 59.996372 seconds)
+2020-05-29 12:33:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:33:37,238 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:34:37.235533+08:00 (in 59.997016 seconds)
+2020-05-29 12:34:37,238 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:34:37,239 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:35:37.236526+08:00 (in 59.997367 seconds)
+2020-05-29 12:35:37,242 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:35:37,243 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:36:37.235533+08:00 (in 59.991728 seconds)
+2020-05-29 12:36:37,248 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:36:37,249 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:37:37.236526+08:00 (in 59.987528 seconds)
+2020-05-29 12:37:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:37:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:38:37.235533+08:00 (in 59.985524 seconds)
+2020-05-29 12:38:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:38:37,249 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:39:37.236526+08:00 (in 59.987552 seconds)
+2020-05-29 12:39:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:39:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:40:37.235533+08:00 (in 59.985393 seconds)
+2020-05-29 12:40:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:40:37,248 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:41:37.236526+08:00 (in 59.987859 seconds)
+2020-05-29 12:41:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:41:37,247 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:42:37.235533+08:00 (in 59.988427 seconds)
+2020-05-29 12:42:37,250 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:42:37,251 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:43:37.236526+08:00 (in 59.984971 seconds)
+2020-05-29 12:43:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:43:37,248 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:44:37.235533+08:00 (in 59.987385 seconds)
+2020-05-29 12:44:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:44:37,248 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:45:37.236526+08:00 (in 59.988584 seconds)
+2020-05-29 12:45:37,252 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:45:37,252 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:46:37.235533+08:00 (in 59.983316 seconds)
+2020-05-29 12:46:37,237 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:46:37,237 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:47:37.236526+08:00 (in 59.999033 seconds)
+2020-05-29 12:47:37,239 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:47:37,239 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:48:37.235533+08:00 (in 59.995670 seconds)
+2020-05-29 12:48:37,237 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:48:37,239 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:49:37.236526+08:00 (in 59.997941 seconds)
+2020-05-29 12:49:37,259 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:49:37,261 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:50:37.235533+08:00 (in 59.975539 seconds)
+2020-05-29 12:50:37,249 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:50:37,249 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:51:37.236526+08:00 (in 59.987487 seconds)
+2020-05-29 12:51:37,249 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:51:37,250 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:52:37.235533+08:00 (in 59.984904 seconds)
+2020-05-29 12:52:37,247 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:52:37,248 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:53:37.236526+08:00 (in 59.987917 seconds)
+2020-05-29 12:53:37,251 base.py[line:926] DEBUG Looking for jobs to run
+2020-05-29 12:53:37,251 base.py[line:1006] DEBUG Next wakeup is due at 2020-05-29 12:54:37.235533+08:00 (in 59.984402 seconds)

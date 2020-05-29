@@ -22,6 +22,7 @@ from Util.LogHandler import LogHandler
 from Util.utilFunction import verifyProxyFormat
 from Util.MyIP import getMyIP
 from ProxyGetter.getFreeProxy import GetFreeProxy
+from ProxyGetter.getChargeProxy import GetChargeProxy
 
 
 class ProxyManager(object):
@@ -44,7 +45,7 @@ class ProxyManager(object):
         for proxyGetter in config.charge_proxy_getter_functions:
             self.log.info("ChargeProxyFetch - {func}: start".format(func=proxyGetter))
             try:
-                for proxy in getattr(GetFreeProxy, proxyGetter.strip())():
+                for proxy in getattr(GetChargeProxy, proxyGetter.strip())():
                     proxy = proxy.strip()
 
                     if not proxy or not verifyProxyFormat(proxy):
