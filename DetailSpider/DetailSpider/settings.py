@@ -70,7 +70,10 @@ COOKIES_ENABLED = True
 #是否遵循robots.txt
 ROBOTSTXT_OBEY = False
 
+#下载延迟 测试不是用代理 并发请求数较低
 DOWNLOAD_DELAY = 6
+
+#并发请求个数  测试不使用代理 并发请求数较低
 CONCURRENT_REQUESTS = 2
 
 REDIRECT_ENABLED = True
@@ -103,7 +106,7 @@ ITEM_PIPELINES = {
     'DetailSpider.DetailPipelines.BossDetailPipeline': 300,
 }
 
-LOG_LEVEL = 'WARNING'
+LOG_LEVEL = 'INFO'
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)

@@ -13,9 +13,9 @@ class CookieProxyUserAgentBindMiddleware(object):
         search = spider.search
         cookieAndProxy = getCookie()
 
-        print("---got Cookie:---")
+        print("-*-got Cookie:-*-")
         print(cookieAndProxy)
-        print("---got Cookie:---")
+        print("-*-got Cookie:-*-")
 
         cookieKey = "__zp_stoken__"
         if cookieAndProxy is not None:
@@ -23,9 +23,8 @@ class CookieProxyUserAgentBindMiddleware(object):
             cookieDic = {cookieKey:cookieAndProxy.get(cookieKey)}
             request.cookies = cookieDic
 
-            # 本地测试 不设置代理
             # 设置与cookie绑定生成的proxy
-            # proxy = cookieAndProxy.get('proxy')
+            # proxy = cookieAndProxy.get('proxy')   # 本地测试 不设置代理
             # request.meta['proxy'] = 'http://' + proxy
 
             #设置与cookie绑定生成的User-Agent

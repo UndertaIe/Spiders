@@ -70,7 +70,9 @@ class RedisSpiderExtension(object):
             if key is not None:
                 spider.redis_key = key #更换redis_key
                 spider.search = key.split(":")[1] #更换spider search
+                logger.info("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
                 logger.info("###[INFO] RedisSpider current redis_key: <{}>. Search: <{}> ###".format(spider.redis_key,spider.search))
+                logger.info("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
         # 连续空闲次数大于idle_number时关闭爬虫
         elif idle_list_len > self.idle_number:
             # 执行关闭爬虫操作
