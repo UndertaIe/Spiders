@@ -26,10 +26,10 @@ def sleepInput():
 
 def sleepError():
     """发生错误时休眠"""
-    sleepRandom(3)
+    sleepRandom(5)
 
 def sleepWarn():
     """发声警告时休眠"""
-    sleepRandom(2)
+    sleepRandom(3)
 
 

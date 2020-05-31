@@ -3,6 +3,7 @@
 from scrapy_redis.spiders import RedisSpider
 from scrapy.selector import Selector
 from ..items import BossItem
+from ..utils.prettyprint import printPretty
 from scrapy.loader import ItemLoader
 import re
 import random
@@ -32,7 +33,8 @@ class BossDetailSpider(RedisSpider):
         self.search = search
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
         self.singleSearch = single
-        print("###[INFO] Boss Detail Spider <{}> is running... ###".format(self.name))
+
+        printPretty("###[INFO] Boss Detail Spider <{}> is running... ###".format(self.name))
 
     #从detail_urls拿到详情页面，得到搜集的数据。
     def parse(self, response):

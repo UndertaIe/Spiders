@@ -36,4 +36,4 @@ class ProxyMiddleware(HttpProxyMiddleware):
             # request.meta['proxy'] = 'http://' + self.proxy['proxy']
             request.meta['proxy'] = 'http://' + aproxy['proxy']
         else:
-            print("###[WARNING] Proxy get ERROR. Using local IP...... ###")
+            print("###[WARNING] ProxyMiddleware Proxy get ERROR. Using local IP...... ###")

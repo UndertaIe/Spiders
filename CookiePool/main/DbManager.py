@@ -18,9 +18,9 @@ def storeCookie(buffer,cookieCount):
     badCount = 0
     while True:
         try:
-            cookieCount.value = dbHandler.count() # 将redis数据库中cookie数目赋给cookieCount
             cookie = buffer.get(timeout=1024)
-            if cookie is not None and len(cookie) == 3:
+            # if cookie is not None and len(cookie) == 3:
+            if cookie is not None and len(cookie) == 2:  #本地测试 使用代理注释本行 使用上句判断 ==3
                 f = dbHandler.insert(cookie)
                 if f == 1:
                     goodCount += 1
@@ -28,6 +28,8 @@ def storeCookie(buffer,cookieCount):
                     badCount += 1
             else:
                 badCount += 1
+
+            cookieCount.value = dbHandler.count()  # 将redis数据库中cookie数目赋给cookieCount
             mes = " | CookiePool | ------>>>>>>>> good Cookie num {},bad Cookie num {},Redis Cookies: {} \r".format(goodCount,badCount,cookieCount.value)
             sys.stdout.write(mes)
             sys.stdout.flush()

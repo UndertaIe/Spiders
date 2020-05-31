@@ -34,3 +34,69 @@
 2020-05-29 13:08:02,273 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
 2020-05-29 13:08:02,274 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
 2020-05-29 13:08:02,274 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 13:19:32,867 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 13:19:32,868 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 13:19:32,871 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 13:19:32,874 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 13:19:32,875 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 13:19:32,878 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 13:42:25,470 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 13:42:25,476 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 13:42:25,476 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 13:42:25,477 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 13:42:25,478 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 13:42:25,479 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 13:52:25,477 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 13:52:25,478 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 13:52:25,480 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 13:52:25,481 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 13:52:25,482 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 13:52:25,482 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:02:25,480 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:02:25,481 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:02:25,487 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:02:25,488 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:02:25,489 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:02:25,489 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:12:25,448 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:12:25,449 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:12:25,452 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:12:25,453 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:12:25,455 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:12:25,460 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:22:25,499 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:22:25,500 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:22:25,502 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:22:25,502 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:22:25,503 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:22:25,503 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:32:25,510 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:32:25,511 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:32:25,519 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:32:25,520 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:32:25,527 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:32:25,528 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:42:25,577 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:42:25,578 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:42:25,580 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:42:25,581 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:42:25,582 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:42:25,582 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 14:52:25,470 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 14:52:25,471 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 14:52:25,472 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 14:52:25,478 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 14:52:25,479 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 14:52:25,480 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 15:02:25,468 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 15:02:25,469 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 15:02:25,470 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 15:02:25,470 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 15:02:25,470 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 15:02:25,470 ProxyScheduler.py[line:36] INFO finish fetch charge proxy
+2020-05-29 15:12:25,516 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-05-29 15:12:25,517 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-05-29 15:12:25,518 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-05-29 15:12:25,518 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-05-29 15:12:25,519 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-05-29 15:12:25,519 ProxyScheduler.py[line:36] INFO finish fetch charge proxy

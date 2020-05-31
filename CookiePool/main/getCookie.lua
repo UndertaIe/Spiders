@@ -9,8 +9,7 @@ function main(splash,args)
 		end)
     splash:set_custom_headers({
         ["User-Agent"] = "*UA*",
-        ['Referer'] = "https://www.zhipin.com/web/common/security-check.html",
-        ['Content-Type'] = 'application/json'
+        ['Referer'] = "https://www.zhipin.com"
     })
     splash:go("*url*")
     splash:wait(1)

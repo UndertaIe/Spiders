@@ -9,8 +9,8 @@ def getProxy():
         r = requests.get(url,headers={"User-Agent":"-*-CookiePool-*-"},timeout=3)
         if r.status_code==200:
             aproxy = r.json()
-    except ConnectionError:
-        print("###[ERROR] ProxyHandler.getProxy Error ###")
+    except:
+        print("###[ERROR] ProxyHandler.getProxy Exception ###")
     return aproxy
 #获取服务器所有代理
 def getAllProxy():
@@ -21,7 +21,7 @@ def getAllProxy():
         if r.status_code==200:
             proxies = r.json()
     except:
-        print("###[ERROR] ProxyHandler.getAllProxy Error ###")
+        print("###[ERROR] ProxyHandler.getAllProxy Exception ###")
     return proxies
 
 #获取服务器代理数
@@ -33,7 +33,7 @@ def getProxyCount():
         if r.status_code==200:
             count = r.json()
     except:
-        print("###[ERROR] ProxyHandler.getProxyCount Error ###")
+        print("###[ERROR] ProxyHandler.getProxyCount Exception ###")
     return count
 
 if __name__ == "__main__":

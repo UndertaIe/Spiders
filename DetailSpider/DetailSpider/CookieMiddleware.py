@@ -11,5 +11,5 @@ class CookieMiddleware(object):
         if cookie is not None:
             request.cookies = getCookie()
         else:
-            print("###[WARNING] Spider request didn't carry Cookie,request may return error page ###")
+            print("###[WARNING] CookieMiddleware Spider request didn't carry Cookie,request may return error page ###")
             sleep(3)

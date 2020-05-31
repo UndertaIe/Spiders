@@ -4,6 +4,7 @@ from scrapy_redis.spiders import RedisSpider
 from scrapy.selector import Selector
 from scrapy.loader import ItemLoader
 from ..utils.RedisHandler import RedisHandler
+from ..utils.prettyprint import printPretty
 import re
 from ..utils.SleepUtil import sleepRandom
 from urllib.parse import unquote,urljoin
@@ -38,7 +39,8 @@ class BossSelectSpider(RedisSpider):
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
         self.singleSearch = single
         self.redisHandler = RedisHandler()
-        print("###[INFO] Boss Select Spider <{}> is running... ###".format(self.name))
+
+        printPretty("###[INFO] Boss Select Spider <{}> is running... ###".format(self.name))
 
     #从select_urls拿到master搜索的得到的url，通过此url拿到下一页的url和此页面的工作详情url
     def parse(self, response):
@@ -70,7 +72,9 @@ class BossSelectSpider(RedisSpider):
                     '//div[@class="primary-box"]/@href').extract()).strip()
                 #生成detail_url
                 detail_url = urljoin(base_url, relative_url)
-                flag = self.redisHandler.insertDetailURL(detail_url)
+
+                flag = self.redisHandler.insertDetailURL(self.search, detail_url)
+
                 if flag != 0:
                     mes = '###[SUCCESS] Select URL <{}> : {} >>> Redis <{}> detail_urls ###'.format(job_adrs, detail_url, self.search)
                     sys.stdout.write(mes + '\n')
@@ -87,10 +91,9 @@ class BossSelectSpider(RedisSpider):
             if  next_relative_url != "javascript:;":
                 next_select_url = urljoin(base_url,next_relative_url)
                 # 获取当前页面的下一页URL
-                self.redisHandler.insertSelectURL(next_select_url)
-                print("###[SUCCESS] Select URL {} : {} >>> Redis <{}> select_urls ###".format(city,next_select_url,self.search))
+                self.redisHandler.insertSelectURL(self.search, next_select_url)
+                print("###[SUCCESS] Search URL <{}> : {} >>> Redis <{}> select_urls ###".format(city,next_select_url,self.search))
             else:
                 print("###[INFO] Search <{}> City <{}> all over #".format(self.search, city))
         else:
             print("###[INFO] Search <{}> City <{}> all over #".format(self.search, city))
-        sleepRandom(1)

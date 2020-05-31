@@ -42,15 +42,15 @@ class RedisSpiderExtension(object):
 
     def spider_opened(self, spider):
         if spider.search == "":
-            logger.info("###[INFO] Cli Spider without search arg,Spider will get select_urls from Redis ###")
+            logger.info("###[INFO] RedisSpider without cli search arg, get select_urls from Redis ###")
             key = self.rhandler.get_redis_select_key()
             if key is not None:
                 spider.redis_key = key  # 更换redis_key
                 spider.search = key.split(":")[1]  # 更换spider search
-        logger.info("###[INFO] Spider current redis_key: <{}>, search: <{}> ###".format(spider.redis_key, spider.search))
+        logger.info("###[INFO] RedisSpider current redis_key: <{}>, Search: <{}> ###".format(spider.redis_key, spider.search))
 
     def spider_closed(self, spider):
-        logger.info("###[INFO] Spider <{}> close, idle count {} , Continuous idle count {} ###".format(spider.name, self.idle_count, len(self.idle_list)))
+        logger.info("###[INFO] RedisSpider <{}> close, idle count {} , Continuous idle count {} ###".format(spider.name, self.idle_count, len(self.idle_list)))
 
     def spider_idle(self, spider):
         self.idle_count += 1  # 空闲计数
@@ -67,7 +67,7 @@ class RedisSpiderExtension(object):
             if key is not None:
                 spider.redis_key = key  # 更换redis_key
                 spider.search = key.split(":")[1]  # 更换spider search
-                logger.info("###[INFO] Spider current redis_key: <{}>. Search: <{}> ###".format(spider.redis_key,spider.search))
+                logger.info("###[INFO] RedisSpider current redis_key: <{}>, Search: <{}> ###".format(spider.redis_key,spider.search))
         elif idle_list_len > self.idle_number:
             # 执行关闭爬虫操作
             self.rhandler.close()

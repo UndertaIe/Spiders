@@ -5,6 +5,13 @@ from ..settings import REDIS_PARAMS,SEARCH
 
 class RedisHandler:
     def __init__(self, host=None, port=None, pwd=None, search=SEARCH):
+        """
+        初始化redis操作类
+        :param host: redis ip
+        :param port: redis port
+        :param pwd: redis requirepass
+        :param search: 搜索岗位 redis的key值
+        """
         try:
             redis_host = host or REDIS_PARAMS['host']
             redis_port = port or REDIS_PARAMS['port']

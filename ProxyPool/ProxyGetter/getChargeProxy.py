@@ -21,7 +21,7 @@ class GetChargeProxy(object):
     @staticmethod
     def chargeProxy01():
         """
-            芝麻代理 高效稳定 收费
+            芝麻代理 高效稳定   收费
         """
         # zhima_url = ""
         # request = WebRequest()

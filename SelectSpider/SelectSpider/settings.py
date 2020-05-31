@@ -74,9 +74,12 @@ COOKIES_ENABLED = True
 ROBOTSTXT_OBEY = False
 
 #下载延迟
-#DOWNLOAD_DELAY = 0
+DOWNLOAD_DELAY = 6
 #并发请求个数
-CONCURRENT_REQUESTS = 16
+CONCURRENT_REQUESTS = 2
+
+REDIRECT_ENABLED = True
+DOWNLOAD_TIMEOUT = 10
 
 #下载中间件
 DOWNLOADER_MIDDLEWARES = {
@@ -92,20 +95,18 @@ DOWNLOADER_MIDDLEWARES = {
     # 'SelectSpider.ProxyMiddleware.ProxyMiddleware':101,
     # 'SelectSpider.CookieMiddleware.CookieMiddleware': 102,
     # 'SelectSpider.UserAgentMiddleware.RotateUserAgentMiddleware':400,
-    # 'SelectSpider.RedirectMiddleware.RedirectMiddleware':400,
+    'SelectSpider.RedirectMiddleware.RedirectMiddleware':500,
     'SelectSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
     'SelectSpider.TimeoutMiddleware.TimeoutMiddleware':610,
 
 }
 #
-# ITEM_PIPELINES = {
-#     'SelectSpider.SelectPipelines.BossSelectPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'SelectSpider.SelectPipelines.BossSelectPipeline': 300,
+}
 
 LOG_LEVEL = 'INFO'
 
-REDIRECT_ENABLED = False
-DOWNLOAD_TIMEOUT = 10
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 
 

@@ -5,7 +5,7 @@ from main.DbManager import storeCookie
 from main.Generator import startCookiePool
 from api.cookieAPI import start_cookie_server
 import fire
-from config import COOKIE_MIN,HEADERS
+from config import COOKIE_MIN,HEADERS,API_SERVER,API_PORT
 
 ''' cookie生成器 '''
 def gen(count=COOKIE_MIN):
@@ -28,7 +28,7 @@ def gen(count=COOKIE_MIN):
     except:
         sys.exit(0)
 
-def api(ip="127.0.0.1",port=7700):
+def api(ip=API_SERVER,port=API_PORT):
     start_cookie_server(ip=ip,port=port)
 
 if __name__ == "__main__":

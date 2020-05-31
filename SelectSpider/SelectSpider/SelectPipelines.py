@@ -69,10 +69,13 @@ class BossSelectPipeline:
         }
         #将一条数据写入mongodb
         col = bossItem['search']
-        result = self.db[col].insert_one(bossItem)
-        if result is not None:
-            print('###[SUCCESS] the {} bossItem >>> MongoDB <{}> Collection ###'.format(bossItem['url'], col))
-        else:
-            print('###[WARNING] the {} bossItem -|- MongoDB <{}> Collection ###'.format(bossItem['url'], col))
+        try:
+            result = self.db[col].insert_one(bossItem)
+            if result is not None:
+                print('###[SUCCESS] the {} bossItem >>> MongoDB <{}> Collection ###'.format(bossItem['url'], col))
+            else:
+                print('###[WARNING] the {} bossItem -|- MongoDB <{}> Collection ###'.format(bossItem['url'], col))
+        except Exception as e:
+            print(e)
         #不显示到屏幕
         #return item

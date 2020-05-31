@@ -12,8 +12,8 @@ class TimeoutMiddleware(DownloadTimeoutMiddleware):
         r = RedisHandler()
         flag = r.insertDetailURL(spider.search, request.url)
         if flag != 0:
-            print('###[INFO] Timeout {} Detail URL : {} >>>> Redis {} detail_urls ###'.format(spider.search, request.url,
+            print('###[WARNING] TimeoutMiddleware <{}> Detail URL : {} >>>> Redis <{}> detail_urls ###'.format(spider.search, request.url,
                                                                                          spider.search))
         else:
-            print('###[ERROR] Timeout {} Detail URL : {} |||| Redis {} detail_urls ###'.format(spider.search, request.url,
+            print('###[ERROR] TimeoutMiddleware <{}> Detail URL : {} |||| Redis <{}> detail_urls ###'.format(spider.search, request.url,
                                                                                        spider.search))

@@ -11,7 +11,7 @@ API_PORT = 7700
 COOKIE_MIN = 3000
 
 COOKIEMAXUSE = 5   # 4 => 5
-POOLSIZE = 2
+POOLSIZE = 1
 UPDATE_TIME = 60 * 2
 EXPIRE_TIME = 60 * 60 * 24
 
@@ -64,7 +64,7 @@ REDIS_PARAMS = {
     'host':'127.0.0.1',
     'port':6379,
     'password':'myredis0',
-    'db':1,
+    'db':2,
 }
 
 #网站URL 通过selenium获取Cookie

@@ -79,7 +79,7 @@ class DbClient(object):
                                                           host=config.db_host,
                                                           port=config.db_port,
                                                           password=config.db_password,
-                                                          db=2)
+                                                          db=1)
 
     def get(self, key, **kwargs):
         return self.client.get(key, **kwargs)
