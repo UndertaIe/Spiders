@@ -31,25 +31,25 @@ class BossSelectSpider(RedisSpider):
     #scrapy-redis启动请求
     redis_key = "Boss:{}:select_urls"
 
-    def __init__(self,search="",single=False,*args,**kwargs):
+    def __init__(self,search="",single="False",*args,**kwargs):
         super(BossSelectSpider, self).__init__(*args,**kwargs)
 
         # 搜索名
         self.search = search
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
-        self.singleSearch = single
+        self.single = single != "False"
         self.redisHandler = RedisHandler()
 
         printPretty("###[INFO] Boss Select Spider <{}> is running... ###".format(self.name))
 
     #从select_urls拿到master搜索的得到的url，通过此url拿到下一页的url和此页面的工作详情url
     def parse(self, response):
-
         #精准搜索策略
         current_url = unquote(response.url)
         ma = re.search("query=(.*?)&", current_url)
         if ma is not None:
             city = ma.group(1)[len(self.search):]  #从当前URL获取城市名
+
 
         list_selector = Selector(response)
         base_url = "https://www.zhipin.com"

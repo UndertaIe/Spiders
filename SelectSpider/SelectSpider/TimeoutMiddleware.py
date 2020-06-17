@@ -3,6 +3,9 @@
 from scrapy.downloadermiddlewares.downloadtimeout import DownloadTimeoutMiddleware
 from time import sleep
 from .utils.RedisHandler import RedisHandler
+from scrapy import signals
+
+
 class TimeoutMiddleware(DownloadTimeoutMiddleware):
 
     def process_exception(self,request, exception, spider):

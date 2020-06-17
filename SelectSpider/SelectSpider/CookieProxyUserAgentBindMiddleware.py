@@ -13,23 +13,26 @@ class CookieProxyUserAgentBindMiddleware(object):
         search = spider.search
         cookieAndProxy = getCookie()
 
-        print("-*-got Cookie:-*-")
-        print(cookieAndProxy)
-        print("-*-got Cookie:-*-")
-
         cookieKey = "__zp_stoken__"
         if cookieAndProxy is not None:
+            print("-*-*-*-*-Got Cookie-*-*-*-*-")
             # 设置cookie
             cookieDic = {cookieKey:cookieAndProxy.get(cookieKey)}
             request.cookies = cookieDic
 
             # 设置与cookie绑定生成的proxy
-            # proxy = cookieAndProxy.get('proxy')   # 本地测试 不设置代理
-            # request.meta['proxy'] = 'http://' + proxy
+            proxy = cookieAndProxy.get('proxy')   # 本地测试 不设置代理
+            if proxy is not None:
+                request.meta['proxy'] = 'http://' + proxy
 
             #设置与cookie绑定生成的User-Agent
             ua = cookieAndProxy.get('ua')
             request.headers.setdefault('User-Agent', ua)
+
+            # 设置referer
+            referer = "https://www.zhipin.com"
+            request.headers.setdefault('referer', referer)
+
         else:
             print("###[WARNING] CookieProxyUserAgentBindMiddleware <{}> Spider request didn't set Cookie,Proxy,UserAgent ###".format(search))
             sleepWarn()

@@ -8,6 +8,9 @@ from random import random
 def sleepRandom(i=0):
     sleep(i+random())
 
+def sleepCookie():
+    sleepRandom(4)
+
 def sleepClick():
     """点击事件休眠"""
     sleepRandom(1)

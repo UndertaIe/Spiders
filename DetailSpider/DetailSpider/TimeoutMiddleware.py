@@ -5,6 +5,7 @@ from time import sleep
 from .utils.RedisHandler import RedisHandler
 
 class TimeoutMiddleware(DownloadTimeoutMiddleware):
+
     def process_exception(self,request, exception, spider):
         #print "####the downloader has exception!"
         # print("###[WARNING] Spider Request timeout Exception ###")

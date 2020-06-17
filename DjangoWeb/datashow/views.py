@@ -6,11 +6,11 @@ from mongoengine import connect
 from mongoengine import disconnect
 import re
 disconnect()
-connect("Cookies", host='127.0.0.1')
+connect("BossJobs", host='127.0.0.1')
 # Create your views here.
 
 def document(request):
-    limit=20
+    limit=50
     pythonItemInfo = PythonItemInfo.objects
     cppItemInfo = CppItemInfo.objects
     javaItemInfo = JavaItemInfo.objects
@@ -31,12 +31,14 @@ def document(request):
     return render(request,'document.html',context)
 
 def tran(s):
-    par = re.compile("\d+")
     try:
-        s1,s2 = par.findall(s)
+        l = re.findall('\d+.?\d+[kK]',s)
+        if len(l) == 1:
+            s1,s2 = re.findall('\d+',l[0])
+            return (int(s1) + int(s2)) / 2
     except:
         return 0
-    return (int(s1)+int(s2))/2
+    return 0
 
 '''返回热门城市后端开发薪酬直方图,热门编程语言薪酬直方图'''
 def histogram():
@@ -80,8 +82,8 @@ def histogram():
             if salary4 != 0:
                 salarys += salary4
                 city_cmp_count += 1
-                lansCmpDict['salarys'][2] += salary4
-                lansCmpDict['count'][2] += 1
+                lansCmpDict['salarys'][3] += salary4
+                lansCmpDict['count'][3] += 1
         if city_cmp_count != 0:
             citysCmp.append((salarys / city_cmp_count))
         else:
@@ -97,8 +99,9 @@ def histogram():
 def chart(request):
     ##饼状图
     d1,d2 = histogram()
+
     context ={
-        'data1':d1,
-        'data2':d2,
+        'data1':[round(i,2) for i in d1],
+        'data2':[round(i,2) for i in d2]
     }
     return render(request,'chart.html',context)

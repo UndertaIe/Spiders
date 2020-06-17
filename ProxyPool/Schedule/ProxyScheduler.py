@@ -55,7 +55,6 @@ def runScheduler():
 
     # 可用免费代理检测
     usefulProxyScheduler()
-
     # 收费代理检测
     chargeProxyCheckScheduler()
     # 调用收费代理API
@@ -69,8 +68,8 @@ def runScheduler():
 
     scheduler.add_job(usefulProxyScheduler, 'interval', minutes=2, id="useful_proxy_check", name="useful_proxy定时检查")
     scheduler.add_job(chargeProxyCheckScheduler, 'interval', minutes=1, id="charge_proxy_check",name="charge_proxy定时检查")
-    scheduler.add_job(chargeProxyFetchScheduler, 'interval', minutes=10, id="charge_proxy_fetch", name="charge_proxy定时采集")
-    scheduler.add_job(rawProxyScheduler, 'interval', minutes=30, id="raw_proxy_check", name="raw_proxy定时采集")
+    scheduler.add_job(chargeProxyFetchScheduler, 'interval', minutes=5, id="charge_proxy_fetch", name="charge_proxy定时采集")
+    scheduler.add_job(rawProxyScheduler, 'interval', minutes=5, id="raw_proxy_check", name="raw_proxy定时采集")
 
     scheduler.start()
 

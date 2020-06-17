@@ -32,6 +32,7 @@ class GetChargeProxy(object):
         #     for l in proxy_list:
         #         proxy = "{ip}:{port}".format(ip=l.get('ip'),port=l.get('port'))
         #         yield proxy
+        pass
 
     @staticmethod
     def chargeProxy02():

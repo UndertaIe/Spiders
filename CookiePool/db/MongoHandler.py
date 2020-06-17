@@ -22,7 +22,7 @@ class MongoHandler(DbHanlder):
             self.Cookies.insert_one(self.driver2mongo(cookie))
 
     # 返回所有cookie
-    def select(self, cookie):
+    def select(self):
         lst = list(self.Cookies.find_one(projection={"_id":False}))
         return lst
 

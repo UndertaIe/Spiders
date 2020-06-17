@@ -1,10 +1,8 @@
 function main(splash,args)
     splash:clear_cookies()
-    splash.images_enabled = false
     splash:set_custom_headers({
         ["User-Agent"] = "*UA*",
-        ['Referer'] = "https://www.zhipin.com",
-        ['Content-Type'] = 'application/json'
+        ['Referer'] = "https://www.zhipin.com"
     })
     splash:go("*url*")
     splash:wait(1)

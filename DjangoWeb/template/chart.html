@@ -1,28 +1,25 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="ui equal width grid" style="margin:5px 0 5px 0;width:70%">
-        <div class="row">
-            <div class="column">
-                <div class="ui container segment">
-                         <div class="ui container" id="his1"></div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-<div class="ui equal width grid" style="margin:5px 0 5px 0;width:70%">
-        <div class="row">
-            <div class="column">
-                <div class="ui container segment">
-                         <div class="ui container" id="dis2"></div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+<style>
+  #container {
+    width:1500px;
+    height: 600px;
+    display: flex;
+    display: -webkit-flex;
+    /* 从左端开始沿水平轴防止flex item */
+    flex-direction: row;
+    /* 强制 flex item不换行，沿着同一行堆叠 */
+    flex-wrap: nowrap;
+    /* flex item在主轴上的对齐方式，这里定义左对齐 */
+    justify-content: flex-start;
+    /* 定义交叉轴对其方式 */
+    align-items: flex-start
+  }
+</style>
+<div id="container">
+    <div id="his1" style="width: 600px;height:400px;"></div>
+    <div id="his2" style="width: 300px;height:400px;"></div>
+</div>>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('his1'));
@@ -39,11 +36,8 @@
         yAxis: {},
         series: [{
             type: 'bar',
-            data: [
-                {% for d in data1 %}
-                {{d|safe}},
-                {% endfor %}
-            ]
+            data: [{% for d in data1 %} {{d|safe}}, {% endfor %}]
+        }]
     };
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
@@ -64,12 +58,10 @@
         yAxis: {},
         series: [{
             type: 'bar',
-            data: [
-                {% for d in data2 %}
-                {{d|safe}},
-                {% endfor %}
-            ]
+            data: [{% for d in data2 %} {{d|safe}}, {% endfor %}]
+        }]
     };
+
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>

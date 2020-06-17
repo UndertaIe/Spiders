@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.remote.remote_connection import LOGGER
 import logging
 import platform
+from utils.UserAgentHandler import getUserAgent
 '''
     获取webdriver.Chrome
 '''
@@ -22,7 +23,7 @@ def getDriver(driverType='chrome'):
 def getChromeDriver():
     options = webdriver.ChromeOptions()
     #不使用无头浏览器可使运行速度更快并且无检测风险
-    # options.add_argument("--headless")  # 设置浏览器为headless无界面模式
+    options.add_argument("--headless")  # 设置浏览器为headless无界面模式
     # options.add_argument("--disable-gpu")
     options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片
     options.add_argument('--no-sandbox')  # 非安全模式

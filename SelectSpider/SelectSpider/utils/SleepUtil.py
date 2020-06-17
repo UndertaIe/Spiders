@@ -12,6 +12,13 @@ def sleepClick():
     """点击事件休眠"""
     sleepRandom(1)
 
+def sleepRedirect():
+    """
+    重定向休眠
+    :return:
+    """
+    sleepRandom(1)
+
 def sleepGet():
     """driver.get事件休眠"""
     sleepRandom(1)

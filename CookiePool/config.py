@@ -10,16 +10,16 @@ API_PORT = 7700
 #Cookie最小值，低于此值则从服务器获取Cookie
 COOKIE_MIN = 3000
 
-COOKIEMAXUSE = 5   # 4 => 5
-POOLSIZE = 1
+COOKIEMAXUSE = 4   # 4 => 5
+POOLSIZE = 4
 UPDATE_TIME = 60 * 2
 EXPIRE_TIME = 60 * 60 * 24
 
 #===========================
 
 #Splash JS渲染引擎接口用于生成Cookie
-#负载均衡nginx ip
-SPLASH_HOST = "192.168.0.210"
+#负载均衡nginx可配置多台Splash服务器，提供渲染服务
+SPLASH_HOST = "127.0.0.1"
 SPLASH_PORT = 8050
 SplashUrl = "http://{}:{}/execute".format(SPLASH_HOST,SPLASH_PORT)
 SplashAuthUser="admin"
@@ -34,8 +34,9 @@ SplashAuthPwd="nimda0"
 # PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
 # PROXY_EXPIRE = 1 * 30
 
+USE_PROXY = False
 PROXY_URL = "http://localhost:5010/"
-PROXY_METHOD = {"get":"get","get_all":"get_all","get_status":"get_status"}
+PROXY_METHOD = {"get":"get", "get_charge":"get_charge", "get_all":"get_all", "get_status":"get_status"}
 PROXY_EXPIRE = 1 * 30
 
 #===========================

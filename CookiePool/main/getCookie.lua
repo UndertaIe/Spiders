@@ -1,6 +1,5 @@
 function main(splash,args)
     splash:clear_cookies()
-    splash.images_enabled = false
     splash:on_request(function(request)
         request:set_proxy{
 	        host = "*proxy_host*",

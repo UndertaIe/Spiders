@@ -10,7 +10,7 @@ def sleepRandom(i=0):
 
 def sleepClick():
     """点击事件休眠"""
-    sleepRandom(1)
+    sleepRandom(2)
 
 def sleepGet():
     """driver.get事件休眠"""

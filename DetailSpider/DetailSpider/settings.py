@@ -70,14 +70,20 @@ COOKIES_ENABLED = True
 #是否遵循robots.txt
 ROBOTSTXT_OBEY = False
 
-#下载延迟 测试不是用代理 并发请求数较低
-DOWNLOAD_DELAY = 6
-
+#下载延迟 测试不是用代理 当前并发请求数设置较低
+# DOWNLOAD_DELAY = 2
 #并发请求个数  测试不使用代理 并发请求数较低
 CONCURRENT_REQUESTS = 2
 
-REDIRECT_ENABLED = True
-DOWNLOAD_TIMEOUT = 10
+#是否运行重定向 这里设置False 因为cookiepool已经完成了cookie的认证。携带cookie访问不需要重定向。
+REDIRECT_ENABLED = False
+
+DOWNLOAD_TIMEOUT = 5
+
+HTTPERROR_ALLOWED_CODES = [403,302,304,307,404]
+
+#redis存储set类型
+REDIS_START_URLS_AS_SET = True
 
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -90,14 +96,15 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 590,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
     'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware': None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 600,
-    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': 610,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
+    'scrapy.downloadermiddlewares.redirect.RedirectMiddleware':None,
     # 'DetailSpider.ProxyMiddleware.ProxyMiddleware':101,
     # 'DetailSpider.CookieMiddleware.CookieMiddleware': 102,
     # 'DetailSpider.UserAgentMiddleware.RotateUserAgentMiddleware':400,
     'DetailSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
-    'DetailSpider.RedirectMiddleware.RedirectMiddleware':500,
+    'DetailSpider.RedirectMiddleware.Redirect_Middleware':400,
     'DetailSpider.TimeoutMiddleware.TimeoutMiddleware':610,
 
 }
@@ -124,12 +131,12 @@ SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 
-MYEXT_ENABLED=True      # 开启扩展
-IDLE_NUMBER=120           # 配置空闲持续时间单位为 120 ，一个时间单位为5s 超过这个时间 即10分钟空闲等待分布式爬虫自动关闭
-RESET_KEY_NUMBER = 4     # 重置redis key时间片个数 超过这个时间 即20s空闲等待后重置redis_key 直到完成所有redis存储的select_urls模式的url
+REDIS_EXT_ENABLED=True      # 开启扩展
+IDLE_NUMBER=8           # 配置空闲次数为8，超过该次数，表示redis中无符合筛选条件的key值 结束爬虫程序
+RESET_KEY_NUMBER = 3    # 重置redis key的idle次数。超过该次数，表示空闲次数满足重置redis key的条件，重置redis key
 
 EXTENSIONS = {
-   'scrapy.extensions.telnet.TelnetConsole': None,
+    'scrapy.extensions.telnet.TelnetConsole': None,
     'DetailSpider.RedisSpiderExtensions.RedisSpiderExtension': 500,
 }
 

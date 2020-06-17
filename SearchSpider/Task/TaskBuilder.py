@@ -32,7 +32,9 @@ def search(Counter,searchKey,searchMethod):
 
 #热门城市搜索
 def hotCitySearch(driver,oneSearch):
-    mes = "###[INFO] HotCity Search {} is Starting. ###\n".format(oneSearch)
+    mes = "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"
+    mes += "###[INFO] HotCity Search {} is Starting. ###\n".format(oneSearch)
+    mes += "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"
     sys.stdout.write(mes + '\n')
     sys.stdout.flush()
     Count = 0
@@ -42,7 +44,7 @@ def hotCitySearch(driver,oneSearch):
     driver.get("https://www.zhipin.com/")
     sleepGet()
     driver.find_element_by_xpath('//div[@class="search-form-con"]/p/input').send_keys(oneSearch)
-    # sleepInput()
+    sleepInput()
     # 获取按钮对象并点击
     button1 = driver.find_element_by_xpath('//button[@class="btn btn-search"]')
     driver.execute_script("arguments[0].click();",button1)
@@ -59,12 +61,9 @@ def hotCitySearch(driver,oneSearch):
             input_box.send_keys(JobAndCity)
             #sleepInput()
             #模拟用户移动点击按钮元素查询数据
-
             button2 = driver.find_element_by_xpath('//button[@class="btn btn-search"]')
             ActionChains(driver).move_to_element(button2).click(button2).perform()
             sleepGet()
-            #driver.execute_script("arguments[0].click();", button2) #headless导致必须这样写才能触发点击事件
-
             # SelectURL
             selectUrl = driver.current_url
             # 插入城市查询URL

@@ -7,7 +7,7 @@ from ..utils.prettyprint import printPretty
 from scrapy.loader import ItemLoader
 import re
 import random
-from time import sleep
+from ..utils.SleepUtil import sleepGet
 '''
 Slave,解析当前页面并获取数据，初始化bossItem对象，在pipieline中持久化。
 
@@ -27,19 +27,19 @@ class BossDetailSpider(RedisSpider):
     #scrapy-redis启动请求
     redis_key = "Boss:{}:detail_urls"
 
-    def __init__(self,search="",single=False,*args,**kwargs):
+    def __init__(self,search="",single="False",*args,**kwargs):
         super(BossDetailSpider, self).__init__(*args,**kwargs)
 
         self.search = search
         self.redis_key = self.redis_key.format(self.search)  # 生成第一个redis_key
-        self.singleSearch = single
+        self.single = single != "False"
 
         printPretty("###[INFO] Boss Detail Spider <{}> is running... ###".format(self.name))
 
     #从detail_urls拿到详情页面，得到搜集的数据。
     def parse(self, response):
         # detail selector
-        #数据解析复杂 不适使用此种对象持久化方法
+        #数据解析太过复杂 不适使用此种简单的对象持久化方法
         # bossItem  = ItemLoader(item=BossItem, response=response)
         # bossItem.add_value()/add_xpath()/add_css()
         bossItem = BossItem()
@@ -64,16 +64,20 @@ class BossDetailSpider(RedisSpider):
             cer['city'] =None
         # 薪资
         salary = self.getField(dSel,'//div[@class="name"]/span[@class="salary"]/text()')
+
         # 福利
-        welfares = self.getField(dSel,'//*[@id="Task"]/div[1]/div/div/div[2]/div[3]/div[2]/span/text()')
+        welfares = self.getField(dSel,'//div[@class="info-primary"]/div[@class="tag-container"]/div[@class="job-tags"]/span/text()')
+
         # 详细地址
-        address = self.getField(dSel,'//*[@id="Task"]/div[3]/div/div[2]/div[2]/div/div[@class="job-location"]/div[@class="location-address"]/text()')
+        address = self.getField(dSel,'//div[@class="job-sec"]/div/div[@class="location-address"]/text()')
+
         # 岗位职责
-        dutys = self.getField(dSel,'//*[@id="Task"]/div[3]/div/div[2]/div[2]/div[1]/div[@class="text"]/text()')
+        dutys = self.getField(dSel, '//div[@class="job-sec"]/div[@class="text"]/text()')
+
         # 发布时间
         try:
-            publish = ''.join(re.findall('\d+.*', ''.join(dSel.xpath(
-                '//*[@id="Task"]/div[3]/div/div[1]/div[2]/p[@class="gray"]/text()').extract()))).strip()
+            publish = ''.join(re.findall('\d+.*', ''.join(
+                dSel.xpath('//div[@class="sider-company"]/p[@class="gray"]/text()').extract()))).strip()
         except:
             publish = None
         # 详情链接:
@@ -93,7 +97,7 @@ class BossDetailSpider(RedisSpider):
         bossItem['dutys'] = dutys
         bossItem['publish'] = publish
         bossItem['url'] = url
-        sleep(random.random())
+        sleepGet()
         yield bossItem
 
     @staticmethod

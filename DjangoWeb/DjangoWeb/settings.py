@@ -80,6 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
 }
 
 
@@ -124,4 +125,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 #引入mongodb连接
 from mongoengine import connect
-connect("BossJobs",host='127.0.0.1',port=27017)
+connect("BossJobs",host='127.0.0.1',port=27017,username="mongo",password="mymongodb")

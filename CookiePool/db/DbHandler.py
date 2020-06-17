@@ -7,7 +7,7 @@ class DbHanlder:
         raise NotImplemented
 
     # 返回所有cookie
-    def select(self, cookie):
+    def select(self):
         raise NotImplemented
 
     # 得到随机cookie

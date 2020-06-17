@@ -3,11 +3,12 @@
 
 from .utils.RedisHandler import RedisHandler
 from scrapy.downloadermiddlewares.redirect import RedirectMiddleware
+from scrapy.exceptions import IgnoreRequest
+from .utils.SleepUtil import sleepRedirect
+class Redirect_Middleware(object):
 
-class Redirect_Middleware(RedirectMiddleware):
-
-    def __init__(self, settings):
-        super(Redirect_Middleware, self).__init__(settings)
+    # def __init__(self, settings):
+    #     super(Redirect_Middleware, self).__init__(settings)
 
     def process_response(self, request, response, spider):
         http_code = response.status
@@ -18,7 +19,7 @@ class Redirect_Middleware(RedirectMiddleware):
 
         # 处理请求失败 再次存入redis
         rhandler = RedisHandler()
-        if http_code // 100 == 3 or http_code // 100 == 4:
+        if (http_code // 100 == 3 or http_code // 100 == 4) and http_code != 404:
             print("###[ERROR] RedirectMiddleware. Error Code: <{}> ###".format(http_code))
             flag = rhandler.insertSelectURL(search, request.url)
             if flag != 0:
@@ -26,8 +27,11 @@ class Redirect_Middleware(RedirectMiddleware):
                                                                                              search))
             else:
                 print('###[ERROR] RedirectMiddleware <{}> Select URL : {} |||| Redis <{}> select_urls ###'.format(search, request.url,
-                                                                                           search))
+                                                                                   search))
         rhandler.close()
+
+        sleepRedirect()
+        raise IgnoreRequest
         #
         # if http_code // 100 == 5:
         #     return request.replace(dont_filter=True)

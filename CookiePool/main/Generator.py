@@ -10,24 +10,25 @@ from main.DbManager import dbHandler
 from config import COOKIE_MIN,COOKIE_URLS,UPDATE_TIME,SplashUrl
 from time import sleep
 import random
-from utils.ProxyHandler import getProxy
+from utils.ProxyHandler import getProxy,getChargeProxy
 from utils.UserAgentHandler import getUserAgent
-from utils.SleepUtil import sleepRandom
+from utils.SleepUtil import sleepCookie
 from config import SplashAuthUser,SplashAuthPwd
 import requests
 import json
 
-def startCookiePool(buffer,cookieCounter,gen_cookie_num):
-    cookiegen = CookieGenerator(buffer,cookieCounter,gen_cookie_num)
+def startCookiePool(buffer, cookieCounter, gen_cookie_num, useProxy):
+    cookiegen = CookieGenerator(buffer,cookieCounter,gen_cookie_num,useProxy)
     cookiegen.run()
 
 class CookieGenerator:
 
-    def __init__(self,buf,cookieCounter,gen_cookie_num=COOKIE_MIN):
+    def __init__(self, buf, cookieCounter, gen_cookie_num, useProxy):
         self.cookie_pool =Pool(POOLSIZE)
         self.handler = dbHandler
         self.cookieCounter = cookieCounter  #实时个数 易变
         self.gen_cookie_num = gen_cookie_num #要生成的cookie个数
+        self.useProxy = useProxy
         self.buffer = buf
         self.splashUrl = ""
         self.luaScript = ""
@@ -35,9 +36,14 @@ class CookieGenerator:
 
     def init_splash(self):
         self.splashUrl = SplashUrl
-        # with open("main/getCookie.lua") as f: #使用代理脚本
-        with open("main/getCookieNoProxy.lua") as f: # 不使用代理脚本
-            self.luaScript = f.read()
+        if self.useProxy:
+            with open("main/getCookie.lua") as f: #使用代理脚本
+                self.luaScript = f.read()
+        else:
+            with open("main/getCookieNoProxy.lua") as f: # 不使用代理脚本
+                self.luaScript = f.read()
+
+                # splash.images_enabled = false
 
     def run(self):
         while True:
@@ -50,7 +56,7 @@ class CookieGenerator:
                 mes += '\r\n | CookiePool | ------>>>>>>>>Now cookie num < MINNUM,start gernerating...'
                 sys.stdout.write(mes + "\r\n")
                 sys.stdout.flush()
-                self.cookie_pool.map(self.getCookie,COOKIE_URLS)
+                self.cookie_pool.map(self.getCookie, COOKIE_URLS)
             else:
                 mes += '\r\n | CookiePool | ------>>>>>>>>Now cookie num meet the requirement,wait UPDATE_TIME...'
                 mes += '\r\n | CookiePool | ------>>>>>>>>Sleep now......'
@@ -58,37 +64,43 @@ class CookieGenerator:
                 sys.stdout.flush()
                 time.sleep(UPDATE_TIME)
 
-    def getCookie(self,COOKIE_URL):
+    def getCookie(self, COOKIE_URL):
         ua = getUserAgent()
-
-        aproxy = None  # 本机测试时不使用代理
-        # aproxy = getProxy()  # 设置实时有效代理IP 否则并发环境下 爬虫速度过高容易被检测出来
 
         lua_source = self.luaScript.replace("*url*",COOKIE_URL)
         if ua is not None:
             lua_source.replace("*UA*", ua)
-        if aproxy is not None:
-            proxy = aproxy.get('proxy')
-            proxy_host,proxy_port = proxy.split(':')
-            lua_source = lua_source.replace("*proxy_host*",proxy_host)   #在lua脚本中更换IP代理
-            lua_source = lua_source.replace("*proxy_port*", proxy_port)
 
-        data = {'timeout': 10, 'lua_source': lua_source}
-        try:
-            r = requests.post(url=self.splashUrl, data=json.dumps(data), headers={'Content-Type': 'application/json'}, auth=(SplashAuthUser,SplashAuthPwd))
-        except:
-            pass
-        if r.status_code == 200:
-            raw_cookies = r.json()
-            if raw_cookies is not None:
-                cookie = self.splash2cookie(raw_cookies)
+        if self.useProxy:
+            aproxy = getProxy()  # 设置实时有效代理IP 否则并发环境下 爬虫速度过高容易被检测出来
+            # aproxy = getChargeProxy()  # 设置收费代理
 
-                #本机测试不设置代理
-                # cookie.setdefault('proxy',proxy) # 设置有效代理
-                print(cookie)
-                cookie.setdefault('ua',ua)
-                self.buffer.put(cookie)
-        sleepRandom(8) # 防止频率过高封IP,使用代理可减去休眠时间
+            if aproxy is not None:
+                proxy = aproxy.get('proxy')
+                proxy_host,proxy_port = proxy.split(':')
+                lua_source = lua_source.replace("*proxy_host*",proxy_host)   #在lua脚本中更换IP代理
+                lua_source = lua_source.replace("*proxy_port*", proxy_port)
+
+        data = {'timeout': 20, 'lua_source': lua_source}
+
+        for i in range(4):
+            try:
+                # ['Content-Type'] = 'application/json'
+                # r = requests.post(url=self.splashUrl, data=json.dumps(data), headers={'Content-Type': 'application/json'}, auth=(SplashAuthUser,SplashAuthPwd))
+                r = requests.post(url=self.splashUrl, data=json.dumps(data), headers={'Content-Type': 'application/json'},timeout=20)
+                if r.status_code == 200:
+                    raw_cookies = r.json()
+                    if raw_cookies is not None:
+                        cookie = self.splash2cookie(raw_cookies)
+                        # 本机测试不设置代理
+                        if self.useProxy:
+                            cookie.setdefault('proxy', proxy)  # 设置有效代理
+                        cookie.setdefault('ua', ua)
+                        self.buffer.put(cookie)
+            except:
+                print("###[WARNING] Remote Splash Service didn't work well ###")
+
+            sleepCookie() # 防止频率过高封IP,使用代理可减去休眠时间
 
     @staticmethod
     def splash2cookie(raw_cookies):

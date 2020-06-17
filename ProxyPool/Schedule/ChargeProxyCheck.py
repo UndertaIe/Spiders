@@ -56,7 +56,7 @@ def doChargeProxyCheck():
         proxy_queue.put(_proxy)
 
     thread_list = list()
-    for index in range(10):
+    for index in range(3):
         thread_list.append(ChargeProxyCheck(proxy_queue, "thread_%s" % index))
 
     for thread in thread_list:

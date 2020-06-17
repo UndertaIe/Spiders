@@ -79,8 +79,14 @@ DOWNLOAD_DELAY = 6
 #并发请求个数  测试不使用代理 并发请求数较低
 CONCURRENT_REQUESTS = 2
 
-REDIRECT_ENABLED = True
-DOWNLOAD_TIMEOUT = 10
+#是否运行重定向 这里设置False 因为cookiepool已经完成了cookie的认证。携带cookie访问不需要重定向。
+REDIRECT_ENABLED = False
+DOWNLOAD_TIMEOUT = 5
+
+HTTPERROR_ALLOWED_CODES = [403,302,304,307,404]
+
+#redis存储 set类型
+REDIS_START_URLS_AS_SET = True
 
 #下载中间件
 DOWNLOADER_MIDDLEWARES = {
@@ -90,13 +96,14 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 590,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
     'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware': None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 600,
-    # 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': 610,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None,
+    'scrapy.downloadermiddlewares.redirect.RedirectMiddleware':None,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
     # 'SelectSpider.ProxyMiddleware.ProxyMiddleware':101,
     # 'SelectSpider.CookieMiddleware.CookieMiddleware': 102,
     # 'SelectSpider.UserAgentMiddleware.RotateUserAgentMiddleware':400,
-    'SelectSpider.RedirectMiddleware.RedirectMiddleware':500,
+    'SelectSpider.RedirectMiddleware.Redirect_Middleware':400,
     'SelectSpider.CookieProxyUserAgentBindMiddleware.CookieProxyUserAgentBindMiddleware':101,
     'SelectSpider.TimeoutMiddleware.TimeoutMiddleware':610,
 
@@ -114,9 +121,9 @@ LOG_LEVEL = 'INFO'
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
-MYEXT_ENABLED=True      # 开启扩展
-IDLE_NUMBER=120           # 配置空闲持续时间单位为 120 ，一个时间单位为5s 超过这个时间 即10分钟空闲等待分布式爬虫自动关闭
-RESET_KEY_NUMBER = 4     # 重置redis key时间片个数 超过这个时间 即20s空闲等待后重置redis_key 直到完成所有redis存储的select_urls模式的url
+REDIS_EXT_ENABLED=True      # 开启扩展
+IDLE_NUMBER=8           # 配置空闲次数为8，超过该次数，表示redis中无符合筛选条件的key值 结束爬虫程序
+RESET_KEY_NUMBER = 3     # 重置redis key的idle次数。超过该次数，表示空闲次数满足重置redis key的条件，重置redis key
 
 EXTENSIONS = {
     'scrapy.extensions.telnet.TelnetConsole': None,

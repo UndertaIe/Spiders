@@ -14,7 +14,6 @@ urls = (
 
 def start_cookie_server(ip,port):
     sys.argv[1] = '{}:{}'.format(ip,port)
-    print("sys.argv:{}".format(sys.argv))
     server = web.application(urls, globals())
     server.run()
 

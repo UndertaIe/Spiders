@@ -1,0 +1,6 @@
+2020-06-01 09:52:56,484 ProxyScheduler.py[line:34] INFO start fetch charge proxy
+2020-06-01 09:52:56,484 ProxyManager.py[line:44] INFO ChargeProxyFetch : start
+2020-06-01 09:52:56,486 ProxyManager.py[line:46] INFO ChargeProxyFetch - chargeProxy01: start
+2020-06-01 09:52:56,489 ProxyManager.py[line:65] ERROR ChargeProxyFetch - chargeProxy01: error
+2020-06-01 09:52:56,490 ProxyManager.py[line:66] ERROR 'NoneType' object is not iterable
+2020-06-01 09:52:56,490 ProxyScheduler.py[line:36] INFO finish fetch charge proxy

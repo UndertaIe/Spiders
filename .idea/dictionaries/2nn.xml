@@ -11,6 +11,7 @@
       <w>citys</w>
       <w>cookiegen</w>
       <w>cookiemaxuse</w>
+      <w>cookiepool</w>
       <w>driverpath</w>
       <w>dutys</w>
       <w>endblock</w>
@@ -22,6 +23,7 @@
       <w>hotcity</w>
       <w>hotcitys</w>
       <w>hotspider</w>
+      <w>httperror</w>
       <w>kargs</w>
       <w>lans</w>
       <w>middlewares</w>
@@ -35,11 +37,13 @@
       <w>phantomjs</w>
       <w>poolsize</w>
       <w>provs</w>
+      <w>proxypool</w>
       <w>rehandler</w>
       <w>resarch</w>
       <w>rhandler</w>
       <w>robotstxt</w>
       <w>salarys</w>
+      <w>scrapy</w>
       <w>searchkey</w>
       <w>searchs</w>
       <w>sqlhelper</w>

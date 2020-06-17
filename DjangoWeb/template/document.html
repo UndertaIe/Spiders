@@ -42,15 +42,15 @@
                        {% for item in itemInfo %}
                        <div class="item">
                             <div class="content">
-                                <div class="header">
-                                    <a href="{{item.url}}">详情链接</a>
-                                </div>
                                 <!--<div class="description">-->
                                     <!--<p>-->
                                         <!--say something!-->
                                     <!--</p>-->
                                 <!--</div>-->
                                 <div class="extra">
+                                    <div class="ui label">
+                                        {{item.search}}
+                                    </div>
                                     <div class="ui label">
                                         {{item.job}}
                                     </div>
@@ -73,7 +73,7 @@
                                         {{item.address}}
                                     </div>
                                     <div class="ui label">
-                                        {{item.url}}
+                                        <a href="{{item.url}}">详情链接</a>
                                     </div>
 
                                 </div>

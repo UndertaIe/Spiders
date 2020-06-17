@@ -18,6 +18,7 @@ from django.db import models
     url =  #细节链接页面'''
 # Create your models here.
 class ItemInfo(Document):
+    search = StringField() #搜索
     job =  StringField()# 职位
     company = StringField() # 公司
     city = StringField() # 城市
@@ -25,12 +26,15 @@ class ItemInfo(Document):
     requirement = StringField() # 学历
     salary = StringField() # 薪资
     welfares = StringField() # 福利
-    dutys = StringField() # 岗位职责
-    publish = StringField() # 发布时间
     address = StringField() # 详细地址
-    url = StringField() # 细节链接页面''
+    dutys = StringField()  # 岗位职责
+    publish = StringField()  # 发布时间
+    url = StringField() # 细节链接页面
     #指定Collection
     meta = {'abstract':True}
+
+    # class Meta:
+    #     abstract = True
 
 class PythonItemInfo(ItemInfo):
     meta = {'collection':'Python'}
