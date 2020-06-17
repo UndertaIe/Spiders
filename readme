@@ -3,7 +3,7 @@
     Spiders/run.py 进入run.py文件目录中
 
     第一阶段：SearchSpider获取站点搜索目录起始页
-        1、python run.py searchSpider --List arg1 --Path arg2 --hotCity True
+        1、python run.py searchSpider --List arg1,arg2,arg3... --Path file_path --hotCity True
 
     第二阶段: ProxyPol,CookiePool辅助模块 提供Cookie，Proxy给爬虫程序
         ProxyPool: python run.py proxypool schedule/api
