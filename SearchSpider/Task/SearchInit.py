@@ -32,10 +32,10 @@ def insertRedisSearch(searchs,searchKey):
     for search in searchs:
         flag = r.insertSearch(search)
         if flag != 0:
-            print("###[SUCCESS] InitSearch {} >>> Redis Search key ###".format(search))
+            print("###[SUCCESS] InitSearch <{}> >>> Redis Search key <{}> ###".format(search,searchKey))
         else:
-            print("###[ERROR] InitSearch {} -|- Redis Search key ###".format(search))
+            print("###[ERROR] InitSearch <{}> -|- Redis Search key <{}> ###".format(search,searchKey))
     search_len = r.getSearchsLen()
-    print("###[INFO] Redis key <Search> remains: <{}> ###".format(search_len))
+    print("###[INFO] Redis key <{}> remains: <{}> ###".format(searchKey,search_len))
 
     r.close()

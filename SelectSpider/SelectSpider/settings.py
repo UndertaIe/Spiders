@@ -74,7 +74,7 @@ COOKIES_ENABLED = True
 ROBOTSTXT_OBEY = False
 
 #下载延迟 测试不是用代理 并发请求数较低
-DOWNLOAD_DELAY = 6
+DOWNLOAD_DELAY = 4
 
 #并发请求个数  测试不使用代理 并发请求数较低
 CONCURRENT_REQUESTS = 2

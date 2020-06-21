@@ -36,7 +36,7 @@ PROXY_EXPIRE = 1 * 30
 # CHROMEDRIVERPATH = "chromedriver.exe"
 # FIREFOXDRIVERPATH="geckodriver.exe"
 # PHANTOMJSPATH="phantomjs.exe"
-HOTCITY = True
+HOTCITY = "True"
 hotCitys = ['北京', '上海', '广州', '深圳', '杭州', '天津', '西安', '苏州', '武汉', '厦门', '长沙', '成都', '郑州', '重庆']
 
 HEADERS = '''

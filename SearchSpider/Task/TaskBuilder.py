@@ -11,10 +11,12 @@ import sys
 
 
 def startTask(Counter,searchKey,isHotCity):
-    if isHotCity:
+    if isHotCity == "True":
         search(Counter,searchKey,searchMethod=hotCitySearch)
-    else:
+    elif isHotCity == "False":
         search(Counter,searchKey, searchMethod=allCitySearch)
+    else:
+        search(Counter, searchKey, searchMethod=hotCitySearch)
 
 #searchMethod可增加搜索方法 在search方法中循环搜索 直到search key中无内容
 def search(Counter,searchKey,searchMethod):
@@ -86,7 +88,9 @@ def hotCitySearch(driver,oneSearch):
 
 #所有城市搜索
 def allCitySearch(driver,oneSearch):
-    mes = "###[INFO] AllCity Search <{}> is Starting. ###\n".format(oneSearch)
+    mes = "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"
+    mes += "###[INFO] AllCity Search <{}> is Starting. ###\n".format(oneSearch)
+    mes += "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"
     sys.stdout.write(mes + '\n')
     sys.stdout.flush()
 
