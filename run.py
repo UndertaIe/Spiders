@@ -7,7 +7,7 @@ import fire
 def spider(search=""):
     """
     爬取一条搜索项 SearchSpider -> SelectSpider -> DetailSpider
-    :param search: 单次爬取
+    :param search: 单次爬取 .
     :return:
     """
     root(List=search, search=search, single=True)
