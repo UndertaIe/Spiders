@@ -5,5 +5,5 @@ pymongo==3.9.0
 redis==3.5.2
 requests==2.23.0
 APScheduler==3.5.1
-lxml==4.4.2
+lxml==4.6.2
 Scrapy==2.1.0
